@@ -12,11 +12,7 @@ const Courses: NextPageWithLayout = () => {
 };
 
 Courses.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <LayoutMain>
-      <LayoutData>{page}</LayoutData>
-    </LayoutMain>
-  );
+  return <LayoutMain>{page}</LayoutMain>;
 };
 
 export default Courses;

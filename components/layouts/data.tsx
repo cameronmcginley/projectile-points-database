@@ -5,20 +5,19 @@ import { useRouter } from "next/router";
 import React from "react";
 import Sidebar from "../Sidebar";
 import { Container, Box, Grid, Paper } from "@mui/material";
+import ContainerMain from "../ContainerMain";
 
 const Layout = ({ children }) => {
   return (
     <>
+      <Navbar />
+      <Hero />
       <Grid container height="94vh">
         <Grid item style={{ width: "16rem" }}>
           <Sidebar />
         </Grid>
         <Grid item xs>
-          <Container sx={{ mt: 4 }}>
-            <Paper square sx={{ minHeight: "70vh" }}>
-              {children}
-            </Paper>
-          </Container>
+          <ContainerMain>{children}</ContainerMain>
         </Grid>
       </Grid>
     </>
