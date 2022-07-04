@@ -1,14 +1,12 @@
 import type { NextPageWithLayout } from "../_app";
 import type { ReactElement } from "react";
-import styles from "../../styles/Home.module.css";
-import LayoutMain from "../../components/layouts/main";
-import LayoutData from "../../components/layouts/data";
-import Hero from "../../components/Hero";
+import LayoutMain from "../components/layouts/main";
+import LayoutData from "../components/layouts/data";
 
 const Courses: NextPageWithLayout = () => {
   return (
     <>
-      <p>Courses Index</p>
+      <p>Page not found</p>
     </>
   );
 };

@@ -14,8 +14,10 @@ const Layout = ({ children }) => {
           <Sidebar />
         </Grid>
         <Grid item xs>
-          <Container>
-            <Paper square>{children}</Paper>
+          <Container sx={{ mt: 4 }}>
+            <Paper square sx={{ minHeight: "70vh" }}>
+              {children}
+            </Paper>
           </Container>
         </Grid>
       </Grid>
