@@ -26,6 +26,7 @@ const Sidebar = (props) => {
         : [
             ...expandedList.filter(function (e) {
               return e !== panel;
+              // return !e.includes(panel);
             }),
           ]
     );

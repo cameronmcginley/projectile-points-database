@@ -29,8 +29,9 @@ const SidebarAccordion = (props) => {
   const router = useRouter();
   const [newExpanded, setNewExpanded] = React.useState(
     router.pathname !== props.link
+    // router.pathname.includes(props.link)
+    // true
   );
-  // const { pathname } = useLocation();
 
   return (
     <Accordion expanded={props.expanded} sx={{ py: 1 }}>
@@ -50,7 +51,8 @@ const SidebarAccordion = (props) => {
             // borderBottom: router.pathname === props.link ? 1 : 0,
             backgroundColor:
               router.pathname === props.link
-                ? theme.palette.highlight.main
+                ? // router.pathname.includes(props.link)
+                  theme.palette.highlight.main
                 : "none",
           }}
         >
