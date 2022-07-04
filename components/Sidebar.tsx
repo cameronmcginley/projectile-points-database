@@ -10,12 +10,16 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SidebarAccordion from "./SidebarAccordion";
+import { useRouter } from "next/router";
 
 const Sidebar = (props) => {
-  const [expandedList, setExpandedList] = React.useState([]);
+  const router = useRouter();
+  const [expandedList, setExpandedList] = React.useState([router.pathname]);
 
   const handleChange = (panel: string, newExpanded: boolean) => {
-    console.log("Adding ", panel);
+    newExpanded
+      ? console.log("Adding ", panel)
+      : console.log("Removing", panel);
     setExpandedList(
       newExpanded
         ? [...expandedList, panel]
@@ -27,38 +31,24 @@ const Sidebar = (props) => {
     );
   };
 
-  //   const handleChange =
-  //     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-  //       console.log("Adding ", panel);
-  //       setExpandedList(
-  //         newExpanded
-  //           ? [...expandedList, panel]
-  //           : [
-  //               ...expandedList.filter(function (e) {
-  //                 return e !== panel;
-  //               }),
-  //             ]
-  //       );
-  //     };
-
   return (
     <Paper square sx={{ width: 1, height: "100%" }}>
       <SidebarAccordion
         handleChange={handleChange}
-        panelKey="panel1"
-        expanded={expandedList.includes("panel1")}
+        panelKey="/courses"
+        expanded={expandedList.includes("/courses")}
         text={"Courses"}
         link={"/courses"}
         items={[
-          { text: "One", link: "/" },
-          { text: "Two", link: "/" },
-          { text: "Three", link: "/" },
+          { text: "One", link: "/courses/one" },
+          { text: "Two", link: "/courses/two" },
+          { text: "Three", link: "/courses/three" },
         ]}
       />
       <SidebarAccordion
         handleChange={handleChange}
-        panelKey="panel2"
-        expanded={expandedList.includes("panel2")}
+        panelKey="/departments"
+        expanded={expandedList.includes("/departments")}
         text={"Departments"}
         link={"/departments"}
         items={[
@@ -69,8 +59,8 @@ const Sidebar = (props) => {
       />
       <SidebarAccordion
         handleChange={handleChange}
-        panelKey="panel3"
-        expanded={expandedList.includes("panel3")}
+        panelKey="/faculty"
+        expanded={expandedList.includes("/faculty")}
         text={"Faculty"}
         link={"/faculty"}
         items={[
@@ -81,8 +71,8 @@ const Sidebar = (props) => {
       />
       <SidebarAccordion
         handleChange={handleChange}
-        panelKey="panel4"
-        expanded={expandedList.includes("panel4")}
+        panelKey="/students"
+        expanded={expandedList.includes("/students")}
         text={"Students"}
         link={"/students"}
         items={[

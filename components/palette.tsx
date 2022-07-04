@@ -10,6 +10,10 @@ const theme = createTheme({
       contrastText: "#fff",
     },
     text: "#444444",
+    highlight: {
+      main: "#c2e4ff",
+      hover: "#F1F1F1",
+    },
   },
 });
 

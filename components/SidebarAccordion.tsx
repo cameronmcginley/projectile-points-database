@@ -4,6 +4,9 @@ import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+// import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import { useRouter } from "next/router";
+import theme from "./palette";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -23,7 +26,11 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const SidebarAccordion = (props) => {
-  const [newExpanded, setNewExpanded] = React.useState(true);
+  const router = useRouter();
+  const [newExpanded, setNewExpanded] = React.useState(
+    router.pathname !== props.link
+  );
+  // const { pathname } = useLocation();
 
   return (
     <Accordion expanded={props.expanded} sx={{ py: 1 }}>
@@ -31,14 +38,27 @@ const SidebarAccordion = (props) => {
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         {/* Opens page */}
         <Button
+          className="sidebar-accordion"
           fullWidth
           href={props.link}
-          sx={{ justifyContent: "flex-start", m: 0, p: 0.25, pl: 3 }}
+          sx={{
+            justifyContent: "flex-start",
+            m: 0,
+            p: 0.25,
+            pl: 3,
+            // Highligh the current active page
+            // borderBottom: router.pathname === props.link ? 1 : 0,
+            backgroundColor:
+              router.pathname === props.link
+                ? theme.palette.highlight.main
+                : "none",
+          }}
         >
           {props.text}
         </Button>
         {/* Replaces default accordion opening with icon button */}
         <Button
+          className="sidebar-accordion"
           onClick={() => {
             props.handleChange(props.panelKey, newExpanded);
             setNewExpanded(!newExpanded);
@@ -60,11 +80,21 @@ const SidebarAccordion = (props) => {
           {props.items.map((item) => {
             return (
               <Button
+                className="sidebar-accordion"
                 fullWidth={true}
                 key={item.text}
                 variant="text"
                 href={item.link}
-                sx={{ justifyContent: "flex-start", m: 0, p: 0.25, pl: 6 }}
+                sx={{
+                  justifyContent: "flex-start",
+                  m: 0,
+                  p: 0.25,
+                  pl: 6,
+                  backgroundColor:
+                    router.pathname === item.link
+                      ? theme.palette.highlight.main
+                      : "none",
+                }}
               >
                 {item.text}
               </Button>
