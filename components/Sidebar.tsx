@@ -14,12 +14,17 @@ import { useRouter } from "next/router";
 
 const Sidebar = (props) => {
   const router = useRouter();
-  const [expandedList, setExpandedList] = React.useState([router.pathname]);
+  const [expandedList, setExpandedList] = React.useState([]);
+
+  React.useEffect(() => {
+    if (!router.isReady) return;
+    setExpandedList([...expandedList, router.asPath]);
+  }, [router.isReady]);
 
   const handleChange = (panel: string, newExpanded: boolean) => {
     newExpanded
       ? console.log("Adding ", panel)
-      : console.log("Removing", panel);
+      : console.log("Removing", panel, router.asPath);
     setExpandedList(
       newExpanded
         ? [...expandedList, panel]
@@ -30,7 +35,7 @@ const Sidebar = (props) => {
                 (
                   e === panel ||
                   // Remove pathname if we are removing the panel for it
-                  (e === router.pathname && router.pathname.includes(panel))
+                  (e === router.asPath && router.asPath.includes(panel))
                 )
               );
             }),

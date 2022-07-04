@@ -28,7 +28,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 const SidebarAccordion = (props) => {
   const router = useRouter();
   const [newExpanded, setNewExpanded] = React.useState(
-    !router.pathname.includes(props.link)
+    !router.asPath.includes(props.link)
   );
 
   return (
@@ -46,10 +46,10 @@ const SidebarAccordion = (props) => {
             p: 0.25,
             pl: 3,
             // Highligh the current active page
-            // borderBottom: router.pathname === props.link ? 1 : 0,
+            // borderBottom: router.asPath === props.link ? 1 : 0,
             backgroundColor:
-              router.pathname === props.link
-                ? // router.pathname.includes(props.link)
+              router.asPath === props.link
+                ? // router.asPath.includes(props.link)
                   theme.palette.highlight.main
                 : "none",
           }}
@@ -91,7 +91,7 @@ const SidebarAccordion = (props) => {
                   p: 0.25,
                   pl: 6,
                   backgroundColor:
-                    router.pathname === item.link
+                    router.asPath === item.link
                       ? theme.palette.highlight.main
                       : "none",
                 }}
