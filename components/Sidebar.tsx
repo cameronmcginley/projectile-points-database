@@ -25,11 +25,27 @@ const Sidebar = (props) => {
         ? [...expandedList, panel]
         : [
             ...expandedList.filter(function (e) {
-              return e !== panel;
-              // return !e.includes(panel);
+              return !(
+                // Remove the panel
+                (
+                  e === panel ||
+                  // Remove pathname if we are removing the panel for it
+                  (e === router.pathname && router.pathname.includes(panel))
+                )
+              );
             }),
           ]
     );
+  };
+
+  // Check if the panelKey is in any elements of expandedList
+  const isExpanded = (panelKey) => {
+    for (let i = 0; i < expandedList.length; i++) {
+      if (expandedList[i].includes(panelKey)) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return (
@@ -37,7 +53,7 @@ const Sidebar = (props) => {
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/courses"
-        expanded={expandedList.includes("/courses")}
+        expanded={isExpanded("/courses")}
         text={"Courses"}
         link={"/courses"}
         items={[
@@ -49,7 +65,7 @@ const Sidebar = (props) => {
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/departments"
-        expanded={expandedList.includes("/departments")}
+        expanded={isExpanded("/departments")}
         text={"Departments"}
         link={"/departments"}
         items={[
@@ -61,7 +77,7 @@ const Sidebar = (props) => {
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/faculty"
-        expanded={expandedList.includes("/faculty")}
+        expanded={isExpanded("/faculty")}
         text={"Faculty"}
         link={"/faculty"}
         items={[
@@ -73,7 +89,7 @@ const Sidebar = (props) => {
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/students"
-        expanded={expandedList.includes("/students")}
+        expanded={isExpanded("/students")}
         text={"Students"}
         link={"/students"}
         items={[

@@ -28,9 +28,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 const SidebarAccordion = (props) => {
   const router = useRouter();
   const [newExpanded, setNewExpanded] = React.useState(
-    router.pathname !== props.link
-    // router.pathname.includes(props.link)
-    // true
+    !router.pathname.includes(props.link)
   );
 
   return (
