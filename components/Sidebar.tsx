@@ -54,7 +54,7 @@ const Sidebar = (props) => {
   };
 
   return (
-    <Paper square sx={{ width: 1, height: "100%" }}>
+    <Paper square sx={{ width: 1, height: "100%" }} noWrap>
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/courses"

@@ -24,3 +24,13 @@ p {
 .sidebar-accordion:hover {
   background-color: #F1F1F1;
 }
+
+.container-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 899px) {
+  .container-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import Sidebar from "../Sidebar";
 import { Container, Box, Grid, Paper } from "@mui/material";
-import ContainerMain from "../ContainerMain";
+import ContainerContent from "../ContainerContent";
 
 const Layout = ({ children }) => {
   return (
@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
           <Sidebar />
         </Grid>
         <Grid item xs>
-          <ContainerMain>{children}</ContainerMain>
+          <ContainerContent bg={true}>{children}</ContainerContent>
         </Grid>
       </Grid>
     </>

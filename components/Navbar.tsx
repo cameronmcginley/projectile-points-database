@@ -6,13 +6,6 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import theme from "./palette";
 
-const pages = [
-  { text: "Courses", link: "/courses" },
-  { text: "Departments", link: "/departments" },
-  { text: "Faculty", link: "/faculty" },
-  { text: "Students", link: "/students" },
-];
-
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
@@ -34,6 +27,7 @@ const Navbar = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {/* Title */}
@@ -43,7 +37,6 @@ const Navbar = () => {
             component="a"
             href="/"
             sx={{
-              mr: 6,
               fontWeight: 700,
               color: theme.palette.text,
               textDecoration: "none",
@@ -52,30 +45,8 @@ const Navbar = () => {
               },
             }}
           >
-            Dashboard
+            School Administrative Dashboard
           </Typography>
-
-          {/* Buttons */}
-          <Box sx={{ flexGrow: 1, display: { md: "flex" } }}>
-            {pages.map((page) => (
-              // <HoverDropdown />
-              <Typography
-                key={page.text}
-                component="a"
-                href={page.link}
-                sx={{
-                  mr: 4,
-                  textDecoration: "none",
-                  color: theme.palette.text,
-                  "&:hover": {
-                    color: theme.palette.primary.main,
-                  },
-                }}
-              >
-                {page.text}
-              </Typography>
-            ))}
-          </Box>
         </Box>
       </Container>
     </AppBar>
