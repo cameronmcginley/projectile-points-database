@@ -1,5 +1,4 @@
 import Navbar from "../Navbar";
-import Hero from "../Hero";
 import React from "react";
 import Sidebar from "../Sidebar";
 import { Grid } from "@mui/material";
@@ -10,7 +9,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <Hero />
       <Grid container height="94vh">
         <Grid item style={{ width: "16rem" }}>
           <Sidebar />

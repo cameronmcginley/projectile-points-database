@@ -4,46 +4,55 @@ import theme from "./palette";
 
 const Navbar = () => {
   return (
-    <AppBar
-      position="static"
-      sx={{
-        backgroundColor: "white",
-        height: "5vh",
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Container maxWidth="xl">
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          {/* Title */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+    <>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "white",
+          height: "5vh",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Box
             sx={{
-              fontWeight: 700,
-              color: theme.palette.text,
-              textDecoration: "none",
-              "&:hover": {
-                color: theme.palette.primary.main,
-              },
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            School Administrative Dashboard
-          </Typography>
-        </Box>
-      </Container>
-    </AppBar>
+            {/* Title */}
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                fontWeight: 700,
+                color: theme.palette.text,
+                textDecoration: "none",
+                "&:hover": {
+                  color: theme.palette.primary.main,
+                },
+              }}
+            >
+              School Administrative Dashboard
+            </Typography>
+          </Box>
+        </Container>
+      </AppBar>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: theme.palette.primary.main,
+          height: "1vh",
+        }}
+      />
+    </>
   );
 };
 export default Navbar;

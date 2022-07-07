@@ -1,5 +1,4 @@
 import Navbar from "../Navbar";
-import Hero from "../Hero";
 import Sidebar from "../Sidebar";
 import React from "react";
 import ContainerContent from "../ContainerContent";
@@ -10,7 +9,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <Hero />
       <Grid container height="94vh">
         <Grid item style={{ width: "16rem" }}>
           <Sidebar />
