@@ -1,12 +1,19 @@
 import React from "react";
 import { Container, Paper } from "@mui/material";
 
-const ContainerMain = ({ children, ...props }) => {
+// Returns the main container for all content
+const ContainerContent = ({
+  children,
+  ...props
+}: {
+  children: React.ReactNode;
+  bg: Boolean;
+}) => {
   return (
     <Container sx={{ mt: 4 }}>
       {/* Display Paper if bg is true */}
       {props.bg ? (
-        <Paper square sx={{ minHeight: "70vh" }}>
+        <Paper square sx={{ minHeight: "70vh", p: 4 }}>
           {children}
         </Paper>
       ) : (
@@ -16,4 +23,4 @@ const ContainerMain = ({ children, ...props }) => {
   );
 };
 
-export default ContainerMain;
+export default ContainerContent;

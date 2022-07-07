@@ -1,12 +1,6 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import { AppBar, Box, Typography, Container } from "@mui/material";
 import theme from "./palette";
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
   return (

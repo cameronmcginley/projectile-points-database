@@ -11,10 +11,30 @@ const Home: NextPageWithLayout = () => {
     <>
       <ContainerCards
         cards={[
-          { title: "Courses", description: "Yo", link: "/courses" },
-          { title: "Departments", description: "Yo", link: "/departments" },
-          { title: "Faculty", description: "Yo", link: "/faculty" },
-          { title: "Students", description: "Yo", link: "/students" },
+          {
+            title: "Courses",
+            description:
+              "Create and view courses and sort by semester, department, level, time, or others.",
+            link: "/courses",
+          },
+          {
+            title: "Departments",
+            description:
+              "View all departments with the ability to modify them or create new ones.",
+            link: "/departments",
+          },
+          {
+            title: "Faculty",
+            description:
+              "View and sort through the list of current and past faculty.",
+            link: "/faculty",
+          },
+          {
+            title: "Students",
+            description:
+              "View and sort through the list of current and past students.",
+            link: "/students",
+          },
         ]}
       />
     </>

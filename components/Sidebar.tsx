@@ -1,21 +1,15 @@
-import theme from "./palette";
-import React, { useState } from "react";
-import { Paper, Container, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
-import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
-import MuiAccordionSummary, {
-  AccordionSummaryProps,
-} from "@mui/material/AccordionSummary";
-import MuiAccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import React from "react";
+import { Paper } from "@mui/material";
 import SidebarAccordion from "./SidebarAccordion";
 import { useRouter } from "next/router";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   const router = useRouter();
-  const [expandedList, setExpandedList] = React.useState([]);
+  // Store keys of expanded panels, defaults to current path in useEffect
+  const [expandedList, setExpandedList] = React.useState<string[]>([]);
 
+  // Wait for isReady before adding to list, else asPath will not
+  // work on dynamic routes
   React.useEffect(() => {
     if (!router.isReady) return;
     setExpandedList([...expandedList, router.asPath]);
@@ -30,13 +24,11 @@ const Sidebar = (props) => {
         ? [...expandedList, panel]
         : [
             ...expandedList.filter(function (e) {
+              // Remove the panel
               return !(
-                // Remove the panel
-                (
-                  e === panel ||
-                  // Remove pathname if we are removing the panel for it
-                  (e === router.asPath && router.asPath.includes(panel))
-                )
+                e === panel ||
+                // Remove pathname too if we are removing the panel for it
+                (e === router.asPath && router.asPath.includes(panel))
               );
             }),
           ]
@@ -44,7 +36,7 @@ const Sidebar = (props) => {
   };
 
   // Check if the panelKey is in any elements of expandedList
-  const isExpanded = (panelKey) => {
+  const isExpanded = (panelKey: string) => {
     for (let i = 0; i < expandedList.length; i++) {
       if (expandedList[i].includes(panelKey)) {
         return true;
@@ -54,7 +46,7 @@ const Sidebar = (props) => {
   };
 
   return (
-    <Paper square sx={{ width: 1, height: "100%" }} noWrap>
+    <Paper square sx={{ width: 1, height: "100%" }}>
       <SidebarAccordion
         handleChange={handleChange}
         panelKey="/courses"

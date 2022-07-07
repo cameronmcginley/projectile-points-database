@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
-// import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { useRouter } from "next/router";
 import theme from "./palette";
 
@@ -25,7 +24,16 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   margin: 0,
 }));
 
-const SidebarAccordion = (props) => {
+interface SidebarAccordionProps {
+  panelKey: string;
+  link: string;
+  expanded: boolean;
+  text: string;
+  handleChange: (panel: string, newExpanded: boolean) => void;
+  items: { text: string; link: string }[];
+}
+
+const SidebarAccordion = (props: SidebarAccordionProps) => {
   const router = useRouter();
   const [newExpanded, setNewExpanded] = React.useState(
     !router.asPath.includes(props.link)

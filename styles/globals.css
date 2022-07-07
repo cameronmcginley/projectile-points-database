@@ -27,6 +27,7 @@ p {
 
 .container-cards {
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
 }
 
 @media only screen and (max-width: 899px) {

@@ -1,22 +1,26 @@
 import React from "react";
-import {
-  Container,
-  Paper,
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  Typography,
-  Box,
-} from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 
-const Card2 = (props) => {
+interface CardData {
+  title: string;
+  description: string;
+  link: string;
+}
+
+interface CardProps {
+  key: string;
+  data: CardData;
+}
+
+// Returns the single card with given title, desc, link
+const CardComponent = (props: CardProps) => {
   return (
     <Card
       component={"a"}
       href={props.data.link}
       sx={{
         textDecoration: "none",
+        height: "100%",
         width: "100%",
         "&:hover": {
           mt: "-1rem",
@@ -24,13 +28,15 @@ const Card2 = (props) => {
       }}
     >
       <CardContent>
-        <Typography variant="h5" component="div">
+        <Typography variant="h5" component="div" sx={{ pb: 2 }}>
           {props.data.title}
         </Typography>
-        <Typography variant="body2">{props.data.description}</Typography>
+        <Typography variant="body2" sx={{ pb: 2 }}>
+          {props.data.description}
+        </Typography>
       </CardContent>
     </Card>
   );
 };
 
-export default Card2;
+export default CardComponent;

@@ -1,18 +1,14 @@
 import Navbar from "../Navbar";
 import Hero from "../Hero";
 import Sidebar from "../Sidebar";
-import { Route, Link, Routes, useLocation } from "react-router-dom";
-import { useRouter } from "next/router";
 import React from "react";
 import ContainerContent from "../ContainerContent";
-import { Container, Box, Grid, Paper } from "@mui/material";
+import { Grid } from "@mui/material";
 
-const Layout = ({ children }) => {
+// Layout that includes Navbar, Sidebar, and non-visible content container
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      {/* <Navbar />
-      <Hero />
-      <ContainerMain>{children}</ContainerMain> */}
       <Navbar />
       <Hero />
       <Grid container height="94vh">

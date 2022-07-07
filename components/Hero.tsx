@@ -1,10 +1,10 @@
 import theme from "./palette";
-import React, { useState } from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-const Hero = (props) => {
+const Hero = (props: { text: string }) => {
   return (
     <AppBar
       position="static"

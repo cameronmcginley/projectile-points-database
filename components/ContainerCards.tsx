@@ -1,8 +1,16 @@
 import React from "react";
-import { Container, Paper, Grid, Box } from "@mui/material";
+import { Box } from "@mui/material";
 import Card from "./Card";
 
-const ContainerMain = (props) => {
+interface CardData {
+  title: string;
+  description: string;
+  link: string;
+}
+
+// props.cards is array of objects
+// Returns grid container specifically for Cards
+const ContainerCard = (props: { cards: CardData[] }) => {
   return (
     <Box
       className="container-cards"
@@ -14,11 +22,12 @@ const ContainerMain = (props) => {
         gap: "2rem",
       }}
     >
-      {props.cards.map((card) => (
+      {props.cards.map((card: CardData) => (
+        // card as obj
         <Card key={card.title} data={card} />
       ))}
     </Box>
   );
 };
 
-export default ContainerMain;
+export default ContainerCard;
