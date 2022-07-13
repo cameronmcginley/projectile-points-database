@@ -13,13 +13,10 @@ export default async function handler(
   // Handle POST
   if (req.method === "POST") {
     try {
-      // Desired SQL, takes 1st and 2nd vals from 'values' list defined below
       const query = "INSERT INTO courses (name, instructor) VALUES($1, $2);";
-      // List of values
       const values = req.body.content;
-      // Get and display resulting message
       const result = await conn.query(query, values);
-      console.log("ttt", result);
+      console.log("Message:", result);
     } catch (error) {
       console.log(error);
     }
