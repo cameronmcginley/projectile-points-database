@@ -1,28 +1,8 @@
 import { ApolloServer } from "apollo-server-micro";
 import "reflect-metadata";
-import {
-  buildSchema,
-  Resolver,
-  Query,
-  Arg,
-  ObjectType,
-  Field,
-  ID,
-} from "type-graphql";
+import { buildSchema } from "type-graphql";
 
-@ObjectType()
-export class Course {
-  @Field(() => ID)
-  name: string;
-}
-
-@Resolver(Course)
-export class CoursesResolver {
-  @Query(() => [Course])
-  courses(): Course[] {
-    return [{ name: "course1-name" }, { name: "course2-name" }];
-  }
-}
+import { CoursesResolver } from "../../src/schema/courses.resolver";
 
 const schema = await buildSchema({
   resolvers: [CoursesResolver],
@@ -30,9 +10,6 @@ const schema = await buildSchema({
 
 const server = new ApolloServer({
   schema,
-  cors: {
-    origin: ["http://localhost:3000", "https://studio.apollographql.com"],
-  },
 });
 
 // Dont want nextjs to parse body of the server func
