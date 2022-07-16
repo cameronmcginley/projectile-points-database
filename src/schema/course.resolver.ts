@@ -1,5 +1,5 @@
-import { Resolver, Query, Arg, Int } from "type-graphql";
-import { Course } from "./course";
+import { Resolver, Mutation, Query, Arg, Int, Ctx } from "type-graphql";
+import { Course, CreateNewCourse } from "./course";
 
 // Use prisma for db connection
 import { PrismaClient } from "@prisma/client";
@@ -24,5 +24,18 @@ export class CourseResolver {
   @Query(() => [Course])
   async courses() {
     return prisma.course.findMany();
+  }
+
+  // Create new course
+  @Mutation((data) => Course, { nullable: true })
+  async createCourse(@Arg("data") newCourseData: CreateNewCourse): Course {
+    const course = await prisma.course.create({
+      data: {
+        name: newCourseData.name,
+        instructor_id: newCourseData.instructor_id,
+        semesters: newCourseData.semesters,
+      },
+    });
+    return course;
   }
 }

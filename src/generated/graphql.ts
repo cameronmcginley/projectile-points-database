@@ -23,6 +23,23 @@ export type Course = {
   semesters: Array<Scalars['String']>;
 };
 
+/** New course */
+export type CreateNewCourse = {
+  instructor_id: Scalars['Float'];
+  name: Scalars['String'];
+  semesters: Array<Scalars['String']>;
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createCourse?: Maybe<Course>;
+};
+
+
+export type MutationCreateCourseArgs = {
+  data: CreateNewCourse;
+};
+
 export type Query = {
   __typename?: 'Query';
   course?: Maybe<Course>;
@@ -40,6 +57,11 @@ export type GetCourseByIdQueryVariables = Exact<{
 
 
 export type GetCourseByIdQuery = { __typename?: 'Query', course?: { __typename?: 'Course', name: string } | null };
+
+export type Unnamed_1_MutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type Unnamed_1_Mutation = { __typename?: 'Mutation', createCourse?: { __typename?: 'Course', name: string, instructor_id: number, semesters: Array<string> } | null };
 
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 

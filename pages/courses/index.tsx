@@ -22,11 +22,12 @@ const Courses: NextPageWithLayout = () => {
   //   // const res_data = await res.json();
   //   // console.log(res_data);
   // };
+  const sendData = async () => {};
 
   return (
     <>
       <p>Courses Index</p>
-      {/* <button onClick={sendData}>Test</button> */}
+      <button onClick={sendData}>Test</button>
     </>
   );
 };

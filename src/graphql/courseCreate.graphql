@@ -1,0 +1,9 @@
+mutation {
+  createCourse(
+    data: { name: "Google Pixel", instructor_id: 1, semesters: ["FALL 2022"] }
+  ) {
+    name
+    instructor_id
+    semesters
+  }
+}
