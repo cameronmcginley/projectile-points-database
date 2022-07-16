@@ -1,0 +1,79 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table school {
+  id Int [pk, increment]
+  name String [not null]
+  department department [not null]
+}
+
+Table department {
+  id Int [pk, increment]
+  name String [not null]
+  school school [not null]
+  school_id Int [not null]
+  major major [not null]
+  faculty faculty [not null]
+}
+
+Table major {
+  id Int [pk, increment]
+  name String [not null]
+  department department [not null]
+  department_id Int [not null]
+  student student [not null]
+}
+
+Table student {
+  id Int [pk, increment]
+  first_name String [not null]
+  last_name String [not null]
+  year_enrolled Int [not null]
+  total_credits Int [not null]
+  courses_completed Json [not null]
+  courses_in_progress Json [not null]
+  major major [not null]
+  major_id Int [not null]
+  advisor advisor [not null]
+}
+
+Table faculty {
+  id Int [pk, increment]
+  title String [not null]
+  first_name String [not null]
+  last_name String [not null]
+  department department [not null]
+  department_id Int [not null]
+  advisor advisor [not null]
+  course course [not null]
+}
+
+Table advisor {
+  faculty faculty [not null]
+  faculty_id Int [not null]
+  student student [not null]
+  student_id Int [pk]
+}
+
+Table course {
+  id Int [pk, increment]
+  name String [not null]
+  instructor faculty [not null]
+  instructor_id Int [not null]
+  semesters String[] [not null]
+}
+
+Ref: department.school_id > school.id
+
+Ref: major.department_id > department.id
+
+Ref: student.major_id > major.id
+
+Ref: faculty.department_id > department.id
+
+Ref: advisor.faculty_id > faculty.id
+
+Ref: advisor.student_id > student.id
+
+Ref: course.instructor_id > faculty.id
