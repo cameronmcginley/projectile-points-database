@@ -1,17 +1,35 @@
 import type { NextPageWithLayout } from "../_app";
 import type { ReactElement } from "react";
 import styles from "../../styles/Home.module.css";
-import LayoutMain from "../../components/layouts/main";
 import LayoutData from "../../components/layouts/data";
-import Hero from "../../components/Hero";
 import { useRouter } from "next/router";
 
-const Courses: NextPageWithLayout = () => {
-  const router = useRouter();
-  const { id } = router.query;
+import React from "react";
+import { dehydrate, useQuery } from "react-query";
+import { queryClient, courseByName } from "../../src/api";
+
+// Get params from URL
+export async function getServerSideProps({ params }) {
+  // Fetch course
+  await queryClient.prefetchQuery("course", () =>
+    courseByName({ name: params.id })
+  );
+
+  // Return dehydrated state
+  return {
+    props: {
+      name: params.id,
+      dehydratedState: dehydrate(queryClient),
+    },
+  };
+}
+
+const Courses: NextPageWithLayout = ({ name }) => {
+  // Fetch data
+  const { data } = useQuery("course", () => courseByName({ name }));
   return (
     <>
-      <p>Courses: {id}</p>
+      <div>{JSON.stringify(data)}</div>
     </>
   );
 };

@@ -48,7 +48,11 @@ const Home: NextPageWithLayout = () => {
           },
         ]}
       />
-      <div>{JSON.stringify(data)}</div>
+      <div>
+        {data.courses.map((item) => {
+          return <p>{item.name}</p>;
+        })}
+      </div>
     </>
   );
 };

@@ -4,9 +4,11 @@ import { QueryClient } from "react-query";
 import { getSdk } from "./generated/graphql";
 
 const gqlClient = new GraphQLClient("http://localhost:3000/api/graphql");
-export const { getCourses } = getSdk(gqlClient);
 
-// Shared between sever and client
+// Queries
+export const { getCourses, courseByName } = getSdk(gqlClient);
+
+// Shared between server and client
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
