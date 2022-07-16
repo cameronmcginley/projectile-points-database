@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model school {
+  id         Int          @id @default(autoincrement())
+  name       String
+  department department[]
+}
+
+model department {
+  id        Int       @id @default(autoincrement())
+  name      String
+  school    school    @relation(fields: [school_id], references: [id])
+  school_id Int
+  major     major[]
+  faculty   faculty[]
+}
+
+model major {
+  id            Int        @id @default(autoincrement())
+  name          String
+  department    department @relation(fields: [department_id], references: [id])
+  department_id Int
+  student       student[]
+}
+
+model student {
+  id                  Int       @id @default(autoincrement())
+  first_name          String
+  last_name           String
+  year_enrolled       Int
+  total_credits       Int
+  courses_completed   Json
+  courses_in_progress Json
+  major               major     @relation(fields: [major_id], references: [id])
+  major_id            Int
+  advisor             advisor[]
+}
+
+model faculty {
+  id            Int        @id @default(autoincrement())
+  title         String
+  first_name    String
+  last_name     String
+  department    department @relation(fields: [department_id], references: [id])
+  department_id Int
+  advisor       advisor[]
+  course        course[]
+}
+
+model advisor {
+  faculty    faculty @relation(fields: [faculty_id], references: [id])
+  faculty_id Int
+  student    student @relation(fields: [student_id], references: [id])
+  student_id Int     @id
+}
+
+model course {
+  id            Int      @id @default(autoincrement())
+  name          String
+  instructor    faculty  @relation(fields: [instructor_id], references: [id])
+  instructor_id Int
+  semesters     String[]
+}

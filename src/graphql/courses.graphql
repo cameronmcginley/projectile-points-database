@@ -1,6 +1,5 @@
 query getCourses {
   courses {
     name
-    instructor
   }
 }

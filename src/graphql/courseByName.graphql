@@ -1,6 +1,0 @@
-query courseByName($name: String!) {
-  course(name: $name) {
-    name
-    instructor
-  }
-}
