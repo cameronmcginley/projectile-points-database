@@ -58,10 +58,10 @@ export type GetCourseByIdQueryVariables = Exact<{
 
 export type GetCourseByIdQuery = { __typename?: 'Query', course?: { __typename?: 'Course', name: string } | null };
 
-export type Unnamed_1_MutationVariables = Exact<{ [key: string]: never; }>;
+export type CreateCourseMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type Unnamed_1_Mutation = { __typename?: 'Mutation', createCourse?: { __typename?: 'Course', name: string, instructor_id: number, semesters: Array<string> } | null };
+export type CreateCourseMutation = { __typename?: 'Mutation', createCourse?: { __typename?: 'Course', name: string, instructor_id: number, semesters: Array<string> } | null };
 
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -73,6 +73,17 @@ export const GetCourseByIdDocument = gql`
     query getCourseByID($id: Int!) {
   course(id: $id) {
     name
+  }
+}
+    `;
+export const CreateCourseDocument = gql`
+    mutation createCourse {
+  createCourse(
+    data: {name: "Google Pixel", instructor_id: 1, semesters: ["FALL 2022"]}
+  ) {
+    name
+    instructor_id
+    semesters
   }
 }
     `;
@@ -93,6 +104,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     getCourseByID(variables: GetCourseByIdQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCourseByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCourseByIdQuery>(GetCourseByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourseByID', 'query');
+    },
+    createCourse(variables?: CreateCourseMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateCourseMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreateCourseMutation>(CreateCourseDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createCourse', 'mutation');
     },
     getCourses(variables?: GetCoursesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCoursesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCoursesQuery>(GetCoursesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourses', 'query');
