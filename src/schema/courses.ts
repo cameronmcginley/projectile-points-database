@@ -9,5 +9,8 @@ export class Course {
   name!: string;
 
   @Field()
-  instructor!: string;
+  instructor_id!: number;
+
+  @Field(() => [String])
+  semesters!: string[];
 }

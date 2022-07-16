@@ -6,29 +6,32 @@ import { useRouter } from "next/router";
 
 import React from "react";
 import { dehydrate, useQuery } from "react-query";
-import { queryClient, courseByName } from "../../src/api";
+import { queryClient, getCourseByID } from "../../src/api";
 
 // Get params from URL
 export async function getServerSideProps({ params }) {
   // Fetch course
   await queryClient.prefetchQuery("course", () =>
-    courseByName({ name: params.id })
+    getCourseByID({ id: parseInt(params.id) })
   );
 
   // Return dehydrated state
   return {
     props: {
-      name: params.id,
+      id: parseInt(params.id),
       dehydratedState: dehydrate(queryClient),
     },
   };
 }
 
-const Courses: NextPageWithLayout = ({ name }) => {
+const Courses: NextPageWithLayout = ({ id }) => {
   // Fetch data
-  const { data } = useQuery("course", () => courseByName({ name }));
+  const { data } = useQuery("course", () => getCourseByID({ id }));
+  console.log(data);
+  console.log("test");
   return (
     <>
+      {/* <div>{JSON.stringify(data)}</div> */}
       <div>{JSON.stringify(data)}</div>
     </>
   );

@@ -18,14 +18,28 @@ export type Scalars = {
 export type Course = {
   __typename?: 'Course';
   id: Scalars['ID'];
-  instructor: Scalars['String'];
+  instructor_id: Scalars['Float'];
   name: Scalars['String'];
+  semesters: Array<Scalars['String']>;
 };
 
 export type Query = {
   __typename?: 'Query';
+  course?: Maybe<Course>;
   courses: Array<Course>;
 };
+
+
+export type QueryCourseArgs = {
+  id: Scalars['Int'];
+};
+
+export type GetCourseByIdQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type GetCourseByIdQuery = { __typename?: 'Query', course?: { __typename?: 'Course', name: string } | null };
 
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -33,6 +47,13 @@ export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetCoursesQuery = { __typename?: 'Query', courses: Array<{ __typename?: 'Course', name: string }> };
 
 
+export const GetCourseByIdDocument = gql`
+    query getCourseByID($id: Int!) {
+  course(id: $id) {
+    name
+  }
+}
+    `;
 export const GetCoursesDocument = gql`
     query getCourses {
   courses {
@@ -48,6 +69,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    getCourseByID(variables: GetCourseByIdQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCourseByIdQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetCourseByIdQuery>(GetCourseByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourseByID', 'query');
+    },
     getCourses(variables?: GetCoursesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCoursesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCoursesQuery>(GetCoursesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourses', 'query');
     }
