@@ -2,10 +2,11 @@ import { ApolloServer } from "apollo-server-micro";
 import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 
-import { CoursesResolver } from "../../src/schema/courses.resolver";
+// Resolvers
+import { CourseResolver } from "../../src/schema/course.resolver";
 
 const schema = await buildSchema({
-  resolvers: [CoursesResolver],
+  resolvers: [CourseResolver],
 });
 
 const server = new ApolloServer({
