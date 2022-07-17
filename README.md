@@ -23,4 +23,4 @@
 ## Schema
 
 Auto-generated DBML image based on Prisma schema.
-![Database Schema](/dbml.png)
+![Database Schema](/dbml.PNG)
