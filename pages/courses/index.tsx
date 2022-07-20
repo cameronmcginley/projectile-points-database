@@ -6,7 +6,6 @@ import { queryClient, createCourse } from "../../src/api";
 
 const Courses: NextPageWithLayout = () => {
   const sendNewCourse = async () => {
-    console.log("Click");
     await queryClient.fetchQuery("createCourse", () => createCourse());
   };
 
