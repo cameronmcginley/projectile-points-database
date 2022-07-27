@@ -1,0 +1,6 @@
+query getPointByName($name: String!) {
+  point(name_id: $name) {
+    name
+    id
+  }
+}

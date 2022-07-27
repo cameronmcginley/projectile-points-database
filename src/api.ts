@@ -6,7 +6,13 @@ import { getSdk } from "./generated/graphql";
 const gqlClient = new GraphQLClient("http://localhost:3000/api/graphql");
 
 // Queries from generated graphql
-export const { getCourses, getCourseByID, createCourse } = getSdk(gqlClient);
+export const {
+  getPoints,
+  getPointByName,
+  getCourses,
+  getCourseByID,
+  createCourse,
+} = getSdk(gqlClient);
 
 // Shared between server and client
 export const queryClient = new QueryClient({

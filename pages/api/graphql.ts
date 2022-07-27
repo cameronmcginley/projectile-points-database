@@ -4,9 +4,10 @@ import { buildSchema } from "type-graphql";
 
 // Resolvers
 import { CourseResolver } from "../../src/schema/course.resolver";
+import { PointResolver } from "../../src/schema/point.resolver";
 
 const schema = await buildSchema({
-  resolvers: [CourseResolver],
+  resolvers: [CourseResolver, PointResolver],
 });
 
 const server = new ApolloServer({

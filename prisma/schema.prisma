@@ -16,7 +16,8 @@ datasource db {
 }
 
 model projectile_point {
-  id              Int     @id @default(autoincrement())
+  id              Int     @default(autoincrement())
+  name_id         String  @id
   name            String?
   // Name details
   // namers          String[]

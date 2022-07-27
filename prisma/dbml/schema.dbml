@@ -3,7 +3,8 @@
 //// ------------------------------------------------------
 
 Table projectile_point {
-  id Int [pk, increment]
+  id Int [increment, not null]
+  name_id String [pk]
   name String
   named_for String
   year_identified Int

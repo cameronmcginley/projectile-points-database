@@ -40,15 +40,29 @@ export type MutationCreateCourseArgs = {
   data: CreateNewCourse;
 };
 
+export type Point = {
+  __typename?: 'Point';
+  id: Scalars['Float'];
+  name: Scalars['String'];
+  name_id: Scalars['ID'];
+};
+
 export type Query = {
   __typename?: 'Query';
   course?: Maybe<Course>;
   courses: Array<Course>;
+  point?: Maybe<Point>;
+  points: Array<Point>;
 };
 
 
 export type QueryCourseArgs = {
   id: Scalars['Int'];
+};
+
+
+export type QueryPointArgs = {
+  name_id: Scalars['String'];
 };
 
 export type GetCourseByIdQueryVariables = Exact<{
@@ -67,6 +81,18 @@ export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetCoursesQuery = { __typename?: 'Query', courses: Array<{ __typename?: 'Course', name: string }> };
+
+export type GetPointByNameQueryVariables = Exact<{
+  name: Scalars['String'];
+}>;
+
+
+export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, id: number } | null };
+
+export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPointsQuery = { __typename?: 'Query', points: Array<{ __typename?: 'Point', name: string }> };
 
 
 export const GetCourseByIdDocument = gql`
@@ -94,6 +120,21 @@ export const GetCoursesDocument = gql`
   }
 }
     `;
+export const GetPointByNameDocument = gql`
+    query getPointByName($name: String!) {
+  point(name_id: $name) {
+    name
+    id
+  }
+}
+    `;
+export const GetPointsDocument = gql`
+    query getPoints {
+  points {
+    name
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
@@ -110,6 +151,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     getCourses(variables?: GetCoursesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCoursesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetCoursesQuery>(GetCoursesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourses', 'query');
+    },
+    getPointByName(variables: GetPointByNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointByNameQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetPointByNameQuery>(GetPointByNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPointByName', 'query');
+    },
+    getPoints(variables?: GetPointsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetPointsQuery>(GetPointsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPoints', 'query');
     }
   };
 }
