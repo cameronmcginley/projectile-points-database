@@ -15,64 +15,51 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model school {
-  id         Int          @id @default(autoincrement())
-  name       String
-  department department[]
+model projectile_point {
+  id              Int     @id @default(autoincrement())
+  name            String?
+  // Name details
+  // namers          String[]
+  named_for       String?
+  year_identified Int?
+  type_site       String?
+  // Background
+  glacial_period  String?
+  cultural_period String?
+  culture         String?
+  phase           String?
+  tradition       String?
+  date_info       String?
+  // Projectile point info
+  variant         String?
+  short_for       String?
+  // Akas should link here when searching for them
+  // aka_list        String[]
+  cluster         String?
+  // material        String[]
+  point_validity  String?
+  // similar_points
+  description     String?
 }
 
-model department {
-  id        Int       @id @default(autoincrement())
-  name      String
-  school    school    @relation(fields: [school_id], references: [id])
-  school_id Int
-  major     major[]
-  faculty   faculty[]
-}
+// model point_validity {
+// }
 
-model major {
-  id            Int        @id @default(autoincrement())
-  name          String
-  department    department @relation(fields: [department_id], references: [id])
-  department_id Int
-  student       student[]
-}
+// model cultural_period {
+// }
 
-model student {
-  id                  Int       @id @default(autoincrement())
-  first_name          String
-  last_name           String
-  year_enrolled       Int
-  total_credits       Int
-  courses_completed   Json
-  courses_in_progress Json
-  major               major     @relation(fields: [major_id], references: [id])
-  major_id            Int
-  advisor             advisor[]
-}
+// model glacial_period {
+// }
 
-model faculty {
-  id            Int        @id @default(autoincrement())
-  title         String
-  first_name    String
-  last_name     String
-  department    department @relation(fields: [department_id], references: [id])
-  department_id Int
-  advisor       advisor[]
-  course        course[]
-}
+// model culture {
+// }
 
-model advisor {
-  faculty    faculty @relation(fields: [faculty_id], references: [id])
-  faculty_id Int
-  student    student @relation(fields: [student_id], references: [id])
-  student_id Int     @id
-}
+// model material {
+// }
 
-model course {
-  id            Int      @id @default(autoincrement())
-  name          String
-  instructor    faculty  @relation(fields: [instructor_id], references: [id])
-  instructor_id Int
-  semesters     String[]
-}
+// // Namers
+// model person {
+// }
+
+// model cluster {
+// }
