@@ -2,5 +2,12 @@ query getPointByName($name: String!) {
   point(name_id: $name) {
     name
     id
+    date_info
+    culture
+    tradition
+    phase
+    glacial_period
+    cultural_period
+    description
   }
 }
