@@ -9,6 +9,10 @@ query getPointByName($name: String!) {
     cultural_period
     description
     aka
+    year_range_start
+    year_range_start_type
+    year_range_end
+    year_range_end_type
   }
 }
 

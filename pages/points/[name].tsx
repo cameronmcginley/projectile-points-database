@@ -3,6 +3,9 @@ import type { ReactElement } from "react";
 import styles from "../../styles/Home.module.css";
 import Layout from "../../components/layouts/projectile_point";
 import { useRouter } from "next/router";
+import HeaderData from "../../components/PointDataPage/HeaderData";
+import Description from "../../components/PointDataPage/Description";
+import DetailTable from "../../components/PointDataPage/DetailTable";
 import {
   Paper,
   Grid,
@@ -14,7 +17,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import ReactMarkdown from "react-markdown";
 
 import React from "react";
 import { dehydrate, useQuery } from "react-query";
@@ -42,13 +44,40 @@ const Points: NextPageWithLayout = ({ name }) => {
   console.log(data);
   console.log("test");
 
-  const [header_data, set_header_data] = React.useState([
+  const [headerData, setHeaderData] = React.useState([
     ["Variant", data.point.variant],
     ["AKA", data.point.aka],
     ["Short For", data.point.short_for],
   ]);
 
-  //   const header_data = [
+  const [pointDetails, setPointDetails] = React.useState([
+    [
+      "Date",
+      [
+        data.point.year_range_start,
+        data.point.year_range_start_type,
+        data.point.year_range_end,
+        data.point.year_range_end_type,
+      ],
+    ],
+    ["Cultural Period", data.point.cultural_period],
+    ["Glacial Period", data.point.glacial_period],
+    ["Canadian Period", data.point.canadian_period],
+    ["Culture", data.point.culture],
+    ["Phase", data.point.phase],
+    ["Tradition", data.point.tradition],
+  ]);
+
+  const [nameDetails, setNameDetails] = React.useState([
+    [
+      ["Named By", data.point.namers],
+      ["Named For", data.point.named_for],
+      ["Year Identified", data.point.year_identified],
+      ["Type Site", data.point.type_site],
+    ],
+  ]);
+
+  //   const headerData = [
   //   ["Variant", data.point.variant],
   //   ["AKA", data.point.aka],
   //   ["Short For", data.point.short_for],
@@ -62,73 +91,21 @@ const Points: NextPageWithLayout = ({ name }) => {
       </Paper> */}
       {data && data.point && (
         <>
-          <Paper
-            sx={{
-              p: 1,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              mb: 2,
-            }}
-          >
-            {/* Title */}
-            <Typography variant="h3">{data.point.name}</Typography>
-
-            {/* Header data */}
-            <TableContainer sx={{ p: 1, width: "auto" }}>
-              <Table
-                size="small"
-                aria-label="simple table"
-                style={{ width: "auto" }}
-              >
-                <TableBody>
-                  {header_data.map((item) => {
-                    // Only show the field if value not null
-                    if (item[1]) {
-                      return (
-                        <TableRow key={item[0]} sx={{ "& td": { border: 0 } }}>
-                          {/* Name */}
-                          <TableCell sx={{ pb: 0 }} align="right">
-                            {item[0] + ":"}
-                          </TableCell>
-
-                          {/* String fields */}
-                          {item[0] !== "AKA" && (
-                            <TableCell sx={{ pl: 0, pb: 0 }}>
-                              {item[1]}
-                            </TableCell>
-                          )}
-
-                          {/* Array fields */}
-                          {item[0] === "AKA" && (
-                            <TableCell sx={{ pl: 0, pb: 0 }}>
-                              {item[1].map((aka, index) => {
-                                return (index ? ", " : "") + aka;
-                              })}
-                              {/* {console.log(item[1])}  */}
-                            </TableCell>
-                          )}
-                        </TableRow>
-                      );
-                    }
-                  })}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
+          {/* Header */}
+          <HeaderData headerData={headerData} name={data.point.name} />
 
           {/* Main grid */}
           <Grid container columnSpacing={2}>
+            {/* Col 1, Description */}
             <Grid xs item style={{ minWidth: "16rem" }}>
-              <Paper sx={{ p: 1 }}>
-                {/* <h1>{data.point.name}</h1>
-              <div>{JSON.stringify(data)}</div> */}
-                <ReactMarkdown>{data.point.description}</ReactMarkdown>
-              </Paper>
+              <Description description={data.point.description} />
             </Grid>
+
+            {/* Col 2, Projectile point details */}
             <Grid item style={{ minWidth: "24rem" }}>
-              {/* Main details */}
-              <Paper>
+              <DetailTable data={pointDetails} />
+              <DetailTable data={nameDetails} />
+              {/* <Paper>
                 <TableContainer sx={{ p: 1 }}>
                   <Table size="small" aria-label="simple table">
                     <TableBody>
@@ -159,10 +136,10 @@ const Points: NextPageWithLayout = ({ name }) => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-              </Paper>
+              </Paper> */}
 
               {/* Name details */}
-              <Paper sx={{ mt: 2 }}>
+              {/* <Paper sx={{ mt: 2 }}>
                 <TableContainer sx={{ p: 1 }}>
                   <Table size="small" aria-label="simple table">
                     <TableBody>
@@ -189,7 +166,7 @@ const Points: NextPageWithLayout = ({ name }) => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-              </Paper>
+              </Paper> */}
             </Grid>
           </Grid>
         </>

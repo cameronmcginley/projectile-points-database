@@ -31,4 +31,16 @@ export class Point {
 
   @Field((type) => [String])
   aka: string[];
+
+  @Field({ nullable: true })
+  year_range_start: number;
+
+  @Field({ nullable: true })
+  year_range_start_type: string;
+
+  @Field({ nullable: true })
+  year_range_end: number;
+
+  @Field({ nullable: true })
+  year_range_end_type: string;
 }
