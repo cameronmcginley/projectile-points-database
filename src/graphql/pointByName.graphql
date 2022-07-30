@@ -1,7 +1,6 @@
 query getPointByName($name: String!) {
   point(name_id: $name) {
     name
-    id
     date_info
     culture
     tradition
@@ -11,3 +10,13 @@ query getPointByName($name: String!) {
     description
   }
 }
+
+# For searching:
+# Implement this for handling searching on multiple fields
+# https://stackoverflow.com/questions/50242518/grahpql-create-requests-with-multiple-optional-arguments
+# Optional params can be null, will be ignored if they aren't input
+#
+# Better idea for now, just read in all data. Then paginate and query
+# it easily. Won't have many entries anyways. Only need to get the info
+# that will show up on the table from graphql, don't need description or
+# stuff like that.

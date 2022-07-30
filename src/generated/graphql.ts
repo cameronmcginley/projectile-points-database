@@ -47,7 +47,6 @@ export type Point = {
   date_info?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   glacial_period?: Maybe<Scalars['String']>;
-  id: Scalars['Float'];
   name: Scalars['String'];
   name_id: Scalars['ID'];
   phase?: Maybe<Scalars['String']>;
@@ -94,7 +93,7 @@ export type GetPointByNameQueryVariables = Exact<{
 }>;
 
 
-export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, id: number, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null } | null };
+export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null } | null };
 
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -131,7 +130,6 @@ export const GetPointByNameDocument = gql`
     query getPointByName($name: String!) {
   point(name_id: $name) {
     name
-    id
     date_info
     culture
     tradition

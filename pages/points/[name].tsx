@@ -45,7 +45,7 @@ const Points: NextPageWithLayout = ({ name }) => {
   const header_data = [
     ["Variant", "test"],
     ["AKA", "test"],
-    ["Short Fot", "test"],
+    ["Short For", "test"],
   ];
   return (
     <>
@@ -54,7 +54,7 @@ const Points: NextPageWithLayout = ({ name }) => {
       {/* <Paper square sx={{ minHeight: "70vh", p: 4 }}>
         <p>test</p>
       </Paper> */}
-      {data && (
+      {data && data.point && (
         <>
           <Paper
             sx={{
@@ -65,10 +65,10 @@ const Points: NextPageWithLayout = ({ name }) => {
               mb: 2,
             }}
           >
+            {/* Title */}
             <Typography variant="h3">{data.point.name}</Typography>
-            {/* <Typography variant="subtitle1">Variant: {"test"}</Typography>
-            <Typography variant="subtitle1">AKA: {"test"}</Typography>
-            <Typography variant="subtitle1">Short For: {"test"}</Typography> */}
+
+            {/* Header data */}
             <TableContainer sx={{ p: 1, width: "auto" }}>
               <Table
                 size="small"
@@ -86,28 +86,12 @@ const Points: NextPageWithLayout = ({ name }) => {
                       </TableRow>
                     );
                   })}
-                  {/* <TableRow sx={{ "& td": { border: 0 } }}>
-                    <TableCell sx={{ pb: 0 }} align="right">
-                      {"Variant: "}
-                    </TableCell>
-                    <TableCell sx={{ pl: 0, pb: 0 }}>{"test"}</TableCell>
-                  </TableRow>
-                  <TableRow sx={{ "& td": { border: 0 } }}>
-                    <TableCell sx={{ pb: 0 }} align="right">
-                      {"AKA: "}
-                    </TableCell>
-                    <TableCell sx={{ pl: 0, pb: 0 }}>{"test"}</TableCell>
-                  </TableRow>
-                  <TableRow sx={{ "& td": { border: 0 } }}>
-                    <TableCell sx={{ pb: 0 }} align="right">
-                      {"Short For: "}
-                    </TableCell>
-                    <TableCell sx={{ pl: 0, pb: 0 }}>{"test"}</TableCell>
-                  </TableRow> */}
                 </TableBody>
               </Table>
             </TableContainer>
           </Paper>
+
+          {/* Main grid */}
           <Grid container columnSpacing={2}>
             <Grid xs item style={{ minWidth: "16rem" }}>
               <Paper sx={{ p: 1 }}>
