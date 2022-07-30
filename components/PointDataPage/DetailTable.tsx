@@ -36,33 +36,40 @@ const DetailTable = (props) => {
       setData(dataCopy);
     }
 
-    // if (data[0][0] === "Named By" && typeof data[0][1] === "object") {
-    //   console.log("Wut");
-    //   let dataCopy = [...data];
-    //   dataCopy[0][1] = "Names";
-    //   setData(dataCopy);
-    // }
+    if (data[0][0] === "Named By" && typeof data[0][1] === "object") {
+      console.log("Wut");
+      let dataCopy = [...data];
+      //   dataCopy[0][1] = dataCopy[0][1].map((name) => {
+      //     return name + ",";
+      //   });
+      dataCopy[0][1] = dataCopy[0][1].join(", ");
+      setData(dataCopy);
+    }
   }, []);
 
   return (
-    <Paper>
-      <TableContainer sx={{ p: 1 }}>
-        <Table size="small" aria-label="simple table">
-          <TableBody>
-            {props.data.map((item) => {
-              console.log(item);
-              if (item[1])
-                return (
-                  <TableRow key={item[0]}>
-                    <TableCell>{item[0]}</TableCell>
-                    <TableCell>{item[1]}</TableCell>
-                  </TableRow>
-                );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+    // Dont render if completely empty
+    <>
+      {data && (
+        <Paper sx={{ mb: 2 }}>
+          <TableContainer sx={{ p: 1 }}>
+            <Table size="small" aria-label="simple table">
+              <TableBody>
+                {props.data.map((item) => {
+                  if (item[1])
+                    return (
+                      <TableRow key={item[0]}>
+                        <TableCell>{item[0]}</TableCell>
+                        <TableCell>{item[1]}</TableCell>
+                      </TableRow>
+                    );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Paper>
+      )}
+    </>
   );
 };
 

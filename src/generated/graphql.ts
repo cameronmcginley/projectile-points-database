@@ -50,8 +50,12 @@ export type Point = {
   glacial_period?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   name_id: Scalars['ID'];
+  named_for?: Maybe<Scalars['String']>;
+  namers: Array<Scalars['String']>;
   phase?: Maybe<Scalars['String']>;
   tradition?: Maybe<Scalars['String']>;
+  type_site?: Maybe<Scalars['String']>;
+  year_identified?: Maybe<Scalars['Float']>;
   year_range_end?: Maybe<Scalars['Float']>;
   year_range_end_type?: Maybe<Scalars['String']>;
   year_range_start?: Maybe<Scalars['Float']>;
@@ -98,7 +102,7 @@ export type GetPointByNameQueryVariables = Exact<{
 }>;
 
 
-export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null, aka: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null } | null };
+export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null, aka: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null } | null };
 
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -147,6 +151,10 @@ export const GetPointByNameDocument = gql`
     year_range_start_type
     year_range_end
     year_range_end_type
+    namers
+    named_for
+    year_identified
+    type_site
   }
 }
     `;

@@ -69,19 +69,12 @@ const Points: NextPageWithLayout = ({ name }) => {
   ]);
 
   const [nameDetails, setNameDetails] = React.useState([
-    [
-      ["Named By", data.point.namers],
-      ["Named For", data.point.named_for],
-      ["Year Identified", data.point.year_identified],
-      ["Type Site", data.point.type_site],
-    ],
+    ["Named By", data.point.namers],
+    ["Named For", data.point.named_for],
+    ["Year Identified", data.point.year_identified],
+    ["Type Site", data.point.type_site],
   ]);
 
-  //   const headerData = [
-  //   ["Variant", data.point.variant],
-  //   ["AKA", data.point.aka],
-  //   ["Short For", data.point.short_for],
-  //   ];
   return (
     <>
       {/* <div>{JSON.stringify(data)}</div> */}

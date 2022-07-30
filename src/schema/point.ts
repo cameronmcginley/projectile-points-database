@@ -43,4 +43,16 @@ export class Point {
 
   @Field({ nullable: true })
   year_range_end_type: string;
+
+  @Field((type) => [String])
+  namers: string[];
+
+  @Field({ nullable: true })
+  type_site: string;
+
+  @Field({ nullable: true })
+  year_identified: number;
+
+  @Field({ nullable: true })
+  named_for: string;
 }

@@ -48,9 +48,10 @@ const HeaderData = (props) => {
                       {/* Array fields */}
                       {item[0] === "AKA" && (
                         <TableCell sx={{ pl: 0, pb: 0 }}>
-                          {item[1].map((aka, index) => {
+                          {/* {item[1].map((aka, index) => {
                             return (index ? ", " : "") + aka;
-                          })}
+                          })} */}
+                          {item[1].join(", ")}
                           {/* {console.log(item[1])}  */}
                         </TableCell>
                       )}
