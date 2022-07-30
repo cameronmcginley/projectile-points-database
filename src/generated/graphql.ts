@@ -42,6 +42,7 @@ export type MutationCreateCourseArgs = {
 
 export type Point = {
   __typename?: 'Point';
+  aka: Array<Scalars['String']>;
   cultural_period?: Maybe<Scalars['String']>;
   culture?: Maybe<Scalars['String']>;
   date_info?: Maybe<Scalars['String']>;
@@ -93,7 +94,7 @@ export type GetPointByNameQueryVariables = Exact<{
 }>;
 
 
-export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null } | null };
+export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture?: string | null, tradition?: string | null, phase?: string | null, glacial_period?: string | null, cultural_period?: string | null, description?: string | null, aka: Array<string> } | null };
 
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -137,6 +138,7 @@ export const GetPointByNameDocument = gql`
     glacial_period
     cultural_period
     description
+    aka
   }
 }
     `;

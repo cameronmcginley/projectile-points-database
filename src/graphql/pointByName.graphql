@@ -8,6 +8,7 @@ query getPointByName($name: String!) {
     glacial_period
     cultural_period
     description
+    aka
   }
 }
 

@@ -28,4 +28,7 @@ export class Point {
 
   @Field({ nullable: true })
   description: string;
+
+  @Field((type) => [String])
+  aka: string[];
 }

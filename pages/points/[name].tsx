@@ -42,11 +42,17 @@ const Points: NextPageWithLayout = ({ name }) => {
   console.log(data);
   console.log("test");
 
-  const header_data = [
-    ["Variant", "test"],
-    ["AKA", "test"],
-    ["Short For", "test"],
-  ];
+  const [header_data, set_header_data] = React.useState([
+    ["Variant", data.point.variant],
+    ["AKA", data.point.aka],
+    ["Short For", data.point.short_for],
+  ]);
+
+  //   const header_data = [
+  //   ["Variant", data.point.variant],
+  //   ["AKA", data.point.aka],
+  //   ["Short For", data.point.short_for],
+  //   ];
   return (
     <>
       {/* <div>{JSON.stringify(data)}</div> */}
@@ -77,14 +83,34 @@ const Points: NextPageWithLayout = ({ name }) => {
               >
                 <TableBody>
                   {header_data.map((item) => {
-                    return (
-                      <TableRow key={item[0]} sx={{ "& td": { border: 0 } }}>
-                        <TableCell sx={{ pb: 0 }} align="right">
-                          {item[0] + ":"}
-                        </TableCell>
-                        <TableCell sx={{ pl: 0, pb: 0 }}>{item[1]}</TableCell>
-                      </TableRow>
-                    );
+                    // Only show the field if value not null
+                    if (item[1]) {
+                      return (
+                        <TableRow key={item[0]} sx={{ "& td": { border: 0 } }}>
+                          {/* Name */}
+                          <TableCell sx={{ pb: 0 }} align="right">
+                            {item[0] + ":"}
+                          </TableCell>
+
+                          {/* String fields */}
+                          {item[0] !== "AKA" && (
+                            <TableCell sx={{ pl: 0, pb: 0 }}>
+                              {item[1]}
+                            </TableCell>
+                          )}
+
+                          {/* Array fields */}
+                          {item[0] === "AKA" && (
+                            <TableCell sx={{ pl: 0, pb: 0 }}>
+                              {item[1].map((aka, index) => {
+                                return (index ? ", " : "") + aka;
+                              })}
+                              {/* {console.log(item[1])}  */}
+                            </TableCell>
+                          )}
+                        </TableRow>
+                      );
+                    }
                   })}
                 </TableBody>
               </Table>
