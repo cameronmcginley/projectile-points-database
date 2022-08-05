@@ -1,6 +1,7 @@
 query getPoints {
   points {
     name
+    name_id
     point_validity
     culture
     shape

@@ -6,53 +6,40 @@ import LayoutData from "../../components/layouts/data";
 import { dehydrate, useQuery } from "react-query";
 import { queryClient, getPoints } from "../../src/api";
 
+import { AppBar, Box, Typography, Container } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
-// const columns: GridColDef[] = [
-//   { field: "id", headerName: "ID", width: 70 },
-//   { field: "firstName", headerName: "First name", width: 130 },
-//   { field: "lastName", headerName: "Last name", width: 130 },
-//   {
-//     field: "age",
-//     headerName: "Age",
-//     type: "number",
-//     width: 90,
-//   },
-//   {
-//     field: "fullName",
-//     headerName: "Full name",
-//     description: "This column has a value getter and is not sortable.",
-//     sortable: false,
-//     width: 160,
-//     valueGetter: (params: GridValueGetterParams) =>
-//       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-//   },
-// ];
-
 const columns: GridColDef[] = [
-  // { field: "name", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name" },
-  { field: "shape", headerName: "Shape" },
-  { field: "size", headerName: "Size" },
-  { field: "culture", headerName: "Cultural Period" },
-  { field: "point_validity", headerName: "Validity" },
-  // { field: "firstName", headerName: "First name", width: 130 },
-  // { field: "lastName", headerName: "Last name", width: 130 },
-  // {
-  //   field: "age",
-  //   headerName: "Age",
-  //   type: "number",
-  //   width: 90,
-  // },
-  // {
-  //   field: "fullName",
-  //   headerName: "Full name",
-  //   description: "This column has a value getter and is not sortable.",
-  //   sortable: false,
-  //   width: 160,
-  //   valueGetter: (params: GridValueGetterParams) =>
-  //     `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  // },
+  {
+    // field: (
+    //   <Typography
+    //     // variant="h6"
+    //     noWrap
+    //     component="a"
+    //     href="/"
+    //     sx={{
+    //       fontWeight: 700,
+    //       // color: theme.palette.text,
+    //       textDecoration: "none",
+    //       // "&:hover": {
+    //       //   color: theme.palette.primary.main,
+    //       // },
+    //     }}
+    //   >
+    //     School Administrative Dashboard
+    //   </Typography>
+    // ),
+    fiekd: "name",
+    headerName: "Name",
+    flex: 1,
+    renderCell: (params) => (
+      <a href={"/points/" + params.row.name_id}>{params.row.name}</a>
+    ),
+  },
+  { field: "shape", headerName: "Shape", flex: 1 },
+  { field: "size", headerName: "Size", flex: 1 },
+  { field: "culture", headerName: "Cultural Period", flex: 1 },
+  { field: "point_validity", headerName: "Validity", flex: 1 },
 ];
 
 export async function getServerSideProps() {
@@ -64,18 +51,6 @@ export async function getServerSideProps() {
   };
 }
 
-// const rows = [
-//   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-//   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-//   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-//   { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-//   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-//   { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-//   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-//   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-//   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-// ];
-
 const Courses: NextPageWithLayout = () => {
   const [pageSize, setPageSize] = React.useState<number>(30);
 
@@ -83,16 +58,19 @@ const Courses: NextPageWithLayout = () => {
 
   return (
     <>
-      <p>Points Index</p>
+      {/* <p>Points Index</p> */}
       {/* {data.points.map((item) => {
         return <p>{item.name}</p>;
       })} */}
-      <div>{JSON.stringify(data)}</div>
-      <div style={{ height: 400, width: "100%" }}>
+      {/* <div>{JSON.stringify(data)}</div> */}
+      <div>
         <DataGrid
+          autoHeight
+          disableSelectionOnClick
           getRowId={(row) => row.name}
           rows={data.points}
           columns={columns}
+          // getRowHeight={() => "auto"}
           // pageSize={30}
           rowsPerPageOptions={[10, 30, 50, 100]}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
