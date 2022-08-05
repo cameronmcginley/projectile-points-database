@@ -32,6 +32,10 @@ import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 const columns: GridColDef[] = [
   // { field: "name", headerName: "ID", width: 70 },
   { field: "name", headerName: "Name" },
+  { field: "shape", headerName: "Shape" },
+  { field: "size", headerName: "Size" },
+  { field: "culture", headerName: "Cultural Period" },
+  { field: "point_validity", headerName: "Validity" },
   // { field: "firstName", headerName: "First name", width: 130 },
   // { field: "lastName", headerName: "Last name", width: 130 },
   // {

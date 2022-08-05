@@ -55,4 +55,13 @@ export class Point {
 
   @Field({ nullable: true })
   named_for: string;
+
+  @Field({ nullable: true })
+  shape: string;
+
+  @Field({ nullable: true })
+  size: string;
+
+  @Field({ nullable: true })
+  point_validity: string;
 }

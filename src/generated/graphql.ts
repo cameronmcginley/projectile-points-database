@@ -53,6 +53,9 @@ export type Point = {
   named_for?: Maybe<Scalars['String']>;
   namers: Array<Scalars['String']>;
   phase?: Maybe<Scalars['String']>;
+  point_validity?: Maybe<Scalars['String']>;
+  shape?: Maybe<Scalars['String']>;
+  size?: Maybe<Scalars['String']>;
   tradition?: Maybe<Scalars['String']>;
   type_site?: Maybe<Scalars['String']>;
   year_identified?: Maybe<Scalars['Float']>;
@@ -107,7 +110,7 @@ export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?:
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPointsQuery = { __typename?: 'Query', points: Array<{ __typename?: 'Point', name: string }> };
+export type GetPointsQuery = { __typename?: 'Query', points: Array<{ __typename?: 'Point', name: string, point_validity?: string | null, culture?: string | null, shape?: string | null, size?: string | null }> };
 
 
 export const GetCourseByIdDocument = gql`
@@ -162,6 +165,10 @@ export const GetPointsDocument = gql`
     query getPoints {
   points {
     name
+    point_validity
+    culture
+    shape
+    size
   }
 }
     `;
