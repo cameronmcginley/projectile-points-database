@@ -37,11 +37,7 @@ const DetailTable = (props) => {
     }
 
     if (data[0][0] === "Named By" && typeof data[0][1] === "object") {
-      console.log("Wut");
       let dataCopy = [...data];
-      //   dataCopy[0][1] = dataCopy[0][1].map((name) => {
-      //     return name + ",";
-      //   });
       dataCopy[0][1] = dataCopy[0][1].join(", ");
       setData(dataCopy);
     }
@@ -58,7 +54,12 @@ const DetailTable = (props) => {
                 {props.data.map((item) => {
                   if (item[1])
                     return (
-                      <TableRow key={item[0]}>
+                      <TableRow
+                        key={item[0]}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
                         <TableCell>{item[0]}</TableCell>
                         <TableCell>{item[1]}</TableCell>
                       </TableRow>
