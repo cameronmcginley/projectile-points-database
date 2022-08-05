@@ -1,5 +1,9 @@
 query getPoints {
   points {
     name
+    point_validity
+    culture
+    shape
+    size
   }
 }

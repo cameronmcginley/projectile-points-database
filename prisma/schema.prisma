@@ -18,6 +18,8 @@ datasource db {
 model projectile_point {
   name_id               String   @id
   name                  String
+  shape                 String
+  size                  String
   // Name details
   namers                String[]
   named_for             String?

@@ -5,6 +5,8 @@
 Table projectile_point {
   name_id String [pk]
   name String [not null]
+  shape String [not null]
+  size String [not null]
   namers String[] [not null]
   named_for String
   year_identified Int
