@@ -40,7 +40,7 @@ const Navbar = () => {
                 },
               }}
             >
-              School Administrative Dashboard
+              Projectile Points Revamped
             </Typography>
           </Box>
         </Container>
