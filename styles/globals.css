@@ -21,6 +21,15 @@ p {
   box-sizing: border-box;
 }
 
+.inset-shadow {
+  box-shadow: inset 0px 10px 6px -10px rgba(0, 0, 0, 0.75), 
+              inset 0px -10px 6px -10px rgba(0, 0, 0, 0.75);
+}
+
+.bottom-shadow {
+  box-shadow: 0px -10px 6px 10px rgba(0, 0, 0, 0.75)
+}
+
 .sidebar-accordion:hover {
   background-color: #F1F1F1;
 }
