@@ -35,7 +35,7 @@ const Navbar = () => {
       </Box>
 
       {/* Links */}
-      <Box className="inset-shadow" sx={{
+      <Box className="navbar-border" sx={{
         width: "100%",
         height: "5vh",
         backgroundColor: "white",
@@ -43,12 +43,11 @@ const Navbar = () => {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        position: "relative",
       }}>
         Title
       </Box>
 
-      <Box className="bottom-shadow" sx={{ width: "100%", height: ".8vh", backgroundColor: theme.palette.primary.main }} />
+      {/* <Box className="bottom-shadow" sx={{ width: "100%", height: ".8vh", backgroundColor: theme.palette.primary.main }} /> */}
     </>
 
   );

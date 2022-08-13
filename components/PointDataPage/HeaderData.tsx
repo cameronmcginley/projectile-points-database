@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Paper,
+  Box,
   Typography,
   TableContainer,
   Table,
@@ -12,7 +12,8 @@ import {
 // Returns the single card with given title, desc, link
 const HeaderData = (props) => {
   return (
-    <Paper
+    <Box
+      className="datapage-box"
       sx={{
         p: 1,
         display: "flex",
@@ -63,7 +64,7 @@ const HeaderData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </Box>
   );
 };
 
