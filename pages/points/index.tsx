@@ -8,28 +8,11 @@ import { queryClient, getPoints } from "../../src/api";
 
 import { AppBar, Box, Typography, Container } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import PointSearch from "../../components/PointSearch";
 
 const columns: GridColDef[] = [
   {
-    // field: (
-    //   <Typography
-    //     // variant="h6"
-    //     noWrap
-    //     component="a"
-    //     href="/"
-    //     sx={{
-    //       fontWeight: 700,
-    //       // color: theme.palette.text,
-    //       textDecoration: "none",
-    //       // "&:hover": {
-    //       //   color: theme.palette.primary.main,
-    //       // },
-    //     }}
-    //   >
-    //     School Administrative Dashboard
-    //   </Typography>
-    // ),
-    fiekd: "name",
+    field: "name",
     headerName: "Name",
     flex: 1,
     renderCell: (params) => (
@@ -63,21 +46,22 @@ const Courses: NextPageWithLayout = () => {
         return <p>{item.name}</p>;
       })} */}
       {/* <div>{JSON.stringify(data)}</div> */}
-      <div>
+      <PointSearch />
+      <Box>
         <DataGrid
           autoHeight
           disableSelectionOnClick
+          // Disables menu for filtering, hiding cols, etc.
+          disableColumnMenu
           getRowId={(row) => row.name}
           rows={data.points}
           columns={columns}
-          // getRowHeight={() => "auto"}
-          // pageSize={30}
+          // Handle table size for changing height
           rowsPerPageOptions={[10, 30, 50, 100]}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           pageSize={pageSize}
-          // checkboxSelection
         />
-      </div>
+      </Box>
     </>
   );
 };
