@@ -47,9 +47,12 @@ const DetailTable = (props) => {
     // Dont render if completely empty
     <>
       {data && (
-        <Box className="datapage-box" sx={{
-          mb: 2,
-        }}>
+        <Box
+          className="datapage-box"
+          sx={{
+            mb: 2,
+          }}
+        >
           <TableContainer sx={{ p: 1 }}>
             <Table size="small" aria-label="simple table">
               <TableBody>

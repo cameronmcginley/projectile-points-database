@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 p {
@@ -22,18 +22,18 @@ p {
 }
 
 .navbar-border {
-  border-top: .1rem solid #ccc;
-  border-bottom: .1rem solid #ccc;
+  border-top: 0.1rem solid #ccc;
+  border-bottom: 0.1rem solid #ccc;
 }
 
 .datapage-box {
   background-color: #fff;
-  border-radius: .5rem;
-  border: .1rem solid #ccc;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #ccc;
 }
 
 .sidebar-accordion:hover {
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
 }
 
 .container-cards {
