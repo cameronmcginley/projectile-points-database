@@ -16,59 +16,84 @@ const PointSearch = () => {
   const [searchValidity, setSearchValidity] = React.useState(null);
   const [searchStates, setSearchStates] = React.useState([]);
 
-  // Array of states
-  let states: string[] = [
-    "Alabama",
-    "Alaska",
-    "Arizona",
-    "Arkansas",
-    "California",
-    "Colorado",
-    "Connecticut",
-    "Delaware",
-    "Florida",
-    "Georgia",
-    "Hawaii",
-    "Idaho",
-    "Illinois",
-    "Indiana",
-    "Iowa",
-    "Kansas",
-    "Kentucky",
-    "Louisiana",
-    "Maine",
-    "Maryland",
-    "Massachusetts",
-    "Michigan",
-    "Minnesota",
-    "Mississippi",
-    "Missouri",
-    "Montana",
-    "Nebraska",
-    "Nevada",
-    "New Hampshire",
-    "New Jersey",
-    "New Mexico",
-    "New York",
-    "North Carolina",
-    "North Dakota",
-    "Ohio",
-    "Oklahoma",
-    "Oregon",
-    "Pennsylvania",
-    "Rhode Island",
-    "South Carolina",
-    "South Dakota",
-    "Tennessee",
-    "Texas",
-    "Utah",
-    "Vermont",
-    "Virginia",
-    "Washington",
-    "West Virginia",
-    "Wisconsin",
-    "Wyoming",
-  ];
+  //   Array of states
+  interface StatesObj {
+    [key: string]: string[];
+  }
+  const states: StatesObj = {
+    "United States": [
+      "Alabama",
+      "Alaska",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "Florida",
+      "Georgia",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Pennsylvania",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ],
+  };
+
+  interface StateOption {
+    state_key: string;
+    state_name: string;
+    country_name: string;
+  }
+
+  // Create state options array, where each states has associated
+  // country in obj
+  const state_options: StateOption[] = [];
+
+  Object.keys(states).forEach((country) => {
+    states[country].forEach((state: string) => {
+      state_options.push({
+        state_key: state.toLowerCase(),
+        state_name: state,
+        country_name: country,
+      });
+    });
+  });
 
   return (
     <Box
@@ -155,7 +180,10 @@ const PointSearch = () => {
       </TextField> */}
       <Autocomplete
         multiple
-        options={states}
+        // options={Object.values(states).flat()}
+        options={state_options}
+        getOptionLabel={(option) => option.state_name}
+        groupBy={(option) => option.country_name}
         renderInput={(params) => <TextField {...params} label="State" />}
       />
     </Box>
