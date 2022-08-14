@@ -7,6 +7,13 @@ import {
   InputLabel,
   Autocomplete,
 } from "@mui/material";
+import { states } from "../constants/states";
+
+interface StateOption {
+  state_key: string;
+  state_name: string;
+  country_name: string;
+}
 
 const PointSearch = () => {
   const [searchName, setSearchName] = React.useState(null);
@@ -16,75 +23,9 @@ const PointSearch = () => {
   const [searchValidity, setSearchValidity] = React.useState(null);
   const [searchStates, setSearchStates] = React.useState([]);
 
-  //   Array of states
-  interface StatesObj {
-    [key: string]: string[];
-  }
-  const states: StatesObj = {
-    "United States": [
-      "Alabama",
-      "Alaska",
-      "Arizona",
-      "Arkansas",
-      "California",
-      "Colorado",
-      "Connecticut",
-      "Delaware",
-      "Florida",
-      "Georgia",
-      "Hawaii",
-      "Idaho",
-      "Illinois",
-      "Indiana",
-      "Iowa",
-      "Kansas",
-      "Kentucky",
-      "Louisiana",
-      "Maine",
-      "Maryland",
-      "Massachusetts",
-      "Michigan",
-      "Minnesota",
-      "Mississippi",
-      "Missouri",
-      "Montana",
-      "Nebraska",
-      "Nevada",
-      "New Hampshire",
-      "New Jersey",
-      "New Mexico",
-      "New York",
-      "North Carolina",
-      "North Dakota",
-      "Ohio",
-      "Oklahoma",
-      "Oregon",
-      "Pennsylvania",
-      "Rhode Island",
-      "South Carolina",
-      "South Dakota",
-      "Tennessee",
-      "Texas",
-      "Utah",
-      "Vermont",
-      "Virginia",
-      "Washington",
-      "West Virginia",
-      "Wisconsin",
-      "Wyoming",
-    ],
-  };
-
-  interface StateOption {
-    state_key: string;
-    state_name: string;
-    country_name: string;
-  }
-
-  // Create state options array, where each states has associated
-  // country in obj
+  // Create state options array, where each state has associated
+  // country in object
   const state_options: StateOption[] = [];
-
   Object.keys(states).forEach((country) => {
     states[country].forEach((state: string) => {
       state_options.push({
@@ -166,21 +107,9 @@ const PointSearch = () => {
         <MenuItem value={30}>Thirty</MenuItem>
       </TextField>
 
-      {/* <TextField
-        autoComplete
-        value={searchState}
-        label="State"
-        onChange={(e) => {
-          setSearchState(e.target.value);
-        }}
-      >
-        {states.map((state) => {
-          return <MenuItem value={state.toLowerCase()}>{state}</MenuItem>;
-        })}
-      </TextField> */}
       <Autocomplete
         multiple
-        // options={Object.values(states).flat()}
+        disableCloseOnSelect
         options={state_options}
         getOptionLabel={(option) => option.state_name}
         groupBy={(option) => option.country_name}
