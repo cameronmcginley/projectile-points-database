@@ -9,7 +9,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <Navbar />
-      <ContainerContent bg={true}>{children}</ContainerContent>
+      {children}
+      {/* <ContainerContent bg={true}>{children}</ContainerContent> */}
       {/* <Grid container height="94vh">
         <Grid item style={{ width: "16rem" }}>
           <Sidebar />

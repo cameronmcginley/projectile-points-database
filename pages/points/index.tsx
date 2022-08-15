@@ -6,7 +6,7 @@ import LayoutData from "../../components/layouts/data";
 import { dehydrate, useQuery } from "react-query";
 import { queryClient, getPoints } from "../../src/api";
 
-import { AppBar, Box, Typography, Container } from "@mui/material";
+import { AppBar, Box, Typography, Container, Grid, Paper } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import PointSearch from "../../components/PointSearch";
 
@@ -46,21 +46,38 @@ const Courses: NextPageWithLayout = () => {
         return <p>{item.name}</p>;
       })} */}
       {/* <div>{JSON.stringify(data)}</div> */}
-      <PointSearch />
-      <Box>
-        <DataGrid
-          autoHeight
-          disableSelectionOnClick
-          // Disables menu for filtering, hiding cols, etc.
-          disableColumnMenu
-          getRowId={(row) => row.name}
-          rows={data.points}
-          columns={columns}
-          // Handle table size for changing height
-          rowsPerPageOptions={[10, 30, 50, 100]}
-          onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-          pageSize={pageSize}
-        />
+      {/* <Box sx={{ display: "flex", width: "90%" }}> */}
+
+      <Box sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{
+            minHeight: "70vh",
+            width: "90%",
+          }}
+        >
+          <Grid item xs>
+            <Paper sx={{ height: "100%", p: 1 }}>
+              <DataGrid
+                autoHeight
+                disableSelectionOnClick
+                // Disables menu for filtering, hiding cols, etc.
+                disableColumnMenu
+                getRowId={(row) => row.name}
+                rows={data.points}
+                columns={columns}
+                // Handle table size for changing height
+                rowsPerPageOptions={[10, 30, 50, 100]}
+                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                pageSize={pageSize}
+              />
+            </Paper>
+          </Grid>
+          <Grid item sx={{ width: "20rem" }}>
+            <PointSearch />
+          </Grid>
+        </Grid>
       </Box>
     </>
   );

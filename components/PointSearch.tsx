@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Paper,
   TextField,
   Select,
   MenuItem,
@@ -37,8 +38,10 @@ const PointSearch = () => {
   });
 
   return (
-    <Box
+    <Paper
       sx={{
+        p: 1,
+        height: "100%",
         "& .MuiTextField-root": { mb: 1 },
       }}
     >
@@ -114,7 +117,7 @@ const PointSearch = () => {
         groupBy={(option) => option.country_name}
         renderInput={(params) => <TextField {...params} label="State" />}
       />
-    </Box>
+    </Paper>
   );
 };
 
