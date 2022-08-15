@@ -38,12 +38,9 @@ const PointSearch = () => {
 
   return (
     <Box
-      component="form"
       sx={{
-        "& .MuiTextField-root": { m: 1, width: "25ch" },
+        "& .MuiTextField-root": { mb: 1 },
       }}
-      noValidate
-      autoComplete="off"
     >
       {/* <p>{searchState}</p> */}
 
@@ -95,6 +92,8 @@ const PointSearch = () => {
       </TextField>
 
       <TextField
+        // sx={{ width: "80%" }}
+        // fullWidth
         select
         value={searchShape}
         label="Validity"
