@@ -8,7 +8,7 @@ import {
   InputLabel,
   Autocomplete,
 } from "@mui/material";
-import { states } from "../constants/states";
+import { countries } from "../constants/countries";
 import { shapes } from "../constants/shapes";
 import StatesMap from "./StatesMap";
 
@@ -26,15 +26,14 @@ const PointSearch = () => {
   const [searchValidity, setSearchValidity] = React.useState(null);
   const [searchStates, setSearchStates] = React.useState([]);
 
-  // Create state options array, where each state has associated
-  // country in object
+  // Convert states to a single list of objs
   const state_options: StateOption[] = [];
-  Object.keys(states).forEach((country) => {
-    states[country].forEach((state: string) => {
+  countries.forEach((country_obj) => {
+    country_obj["states"].forEach((state_obj) => {
       state_options.push({
-        state_key: state.toLowerCase(),
-        state_name: state,
-        country_name: country,
+        state_key: state_obj["key"],
+        state_name: state_obj["name"],
+        country_name: country_obj.name,
       });
     });
   });
