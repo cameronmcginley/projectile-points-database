@@ -1,23 +1,9 @@
-// interface StatesObj {
-//   [key: string]: string[];
-// }
+interface Shape {
+  key: string;
+  name: string;
+}
 
-// export const shapes = {
-//   expanding_stemmed: "Expanding Stemmed",
-//   stemmed: "Stemmed",
-//   ovoid: "Ovoid",
-//   corner_notch: "Corner Notch",
-//   side_notch: "Side Notch",
-//   contracting_stem: "Contracting Stem",
-//   bifurcated: "Bifurcated",
-//   triangle: "Triangle",
-//   other: "Other",
-//   lanceolate: "Lanceolate",
-//   basal_notch: "Basal Notch",
-//   auriculate: "Auriculate",
-// };
-
-export const shapes = [
+export const shapes: Shape[] = [
   {
     key: "expanding_stemmed",
     name: "Expanding Stemmed",
