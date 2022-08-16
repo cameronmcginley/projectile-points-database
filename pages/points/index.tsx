@@ -57,7 +57,7 @@ const Courses: NextPageWithLayout = () => {
             width: "90%",
           }}
         >
-          <Grid item xs>
+          <Grid item xs className="points-table">
             <Paper sx={{ height: "100%", p: 1 }}>
               <DataGrid
                 autoHeight
@@ -74,7 +74,7 @@ const Courses: NextPageWithLayout = () => {
               />
             </Paper>
           </Grid>
-          <Grid item sx={{ width: "20rem" }}>
+          <Grid item className="points-search">
             <PointSearch />
           </Grid>
         </Grid>

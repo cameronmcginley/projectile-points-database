@@ -21,9 +21,25 @@ p {
   box-sizing: border-box;
 }
 
+/* Navbar */
 .navbar-border {
   border-top: 0.1rem solid #ccc;
   border-bottom: 0.1rem solid #ccc;
+}
+
+/* /points */
+.points-search {
+  width: 20rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .points-table {
+    width: 100%;
+  }
+  
+  .points-search {
+    width: 100%;
+  }
 }
 
 .datapage-box {

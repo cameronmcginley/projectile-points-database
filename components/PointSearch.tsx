@@ -9,6 +9,8 @@ import {
   Autocomplete,
 } from "@mui/material";
 import { states } from "../constants/states";
+import { shapes } from "../constants/shapes";
+import StatesMap from "./StatesMap";
 
 interface StateOption {
   state_key: string;
@@ -46,6 +48,7 @@ const PointSearch = () => {
       }}
     >
       {/* <p>{searchState}</p> */}
+      {/* <p>{JSON.stringify(searchStates)}</p> */}
 
       <TextField
         id="outlined-required"
@@ -94,7 +97,7 @@ const PointSearch = () => {
         <MenuItem value={30}>Thirty</MenuItem>
       </TextField>
 
-      <TextField
+      {/* <TextField
         // sx={{ width: "80%" }}
         // fullWidth
         select
@@ -107,14 +110,29 @@ const PointSearch = () => {
         <MenuItem value={10}>Ten</MenuItem>
         <MenuItem value={20}>Twenty</MenuItem>
         <MenuItem value={30}>Thirty</MenuItem>
-      </TextField>
+      </TextField> */}
+      <p>{JSON.stringify(searchShape)}</p>
+      <Autocomplete
+        multiple
+        disableCloseOnSelect
+        options={shapes}
+        getOptionLabel={(option) => option.name}
+        onChange={(e, new_val) => {
+          setSearchShape(new_val);
+        }}
+        renderInput={(params) => <TextField {...params} label="Shape" />}
+      />
 
+      <p>{JSON.stringify(searchStates)}</p>
       <Autocomplete
         multiple
         disableCloseOnSelect
         options={state_options}
         getOptionLabel={(option) => option.state_name}
         groupBy={(option) => option.country_name}
+        onChange={(e, new_val) => {
+          setSearchStates(new_val);
+        }}
         renderInput={(params) => <TextField {...params} label="State" />}
       />
     </Paper>
