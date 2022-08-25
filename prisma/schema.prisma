@@ -16,9 +16,9 @@ datasource db {
 }
 
 model projectile_point {
-  name_id               String   @id
+  name_id               String            @id
   name                  String
-  shape                 String
+  shape                 shape[]
   size                  String
   // Name details
   namers                String[]
@@ -28,7 +28,7 @@ model projectile_point {
   // Background
   glacial_period        String?
   canadian_period       String?
-  cultural_period       String?
+  cultural_period       cultural_period[]
   culture               String?
   phase                 String?
   tradition             String?
@@ -47,4 +47,18 @@ model projectile_point {
   description           String?
   // List of similar points, stores name_id's
   similar_point         String[]
+}
+
+model cultural_period {
+  id                      Int               @id @default(autoincrement())
+  projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
+  projectile_pointName_id String?
+  name                    String?
+}
+
+model shape {
+  id                      Int               @id @default(autoincrement())
+  projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
+  projectile_pointName_id String?
+  name                    String?
 }

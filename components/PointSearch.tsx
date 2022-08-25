@@ -19,11 +19,11 @@ interface StateOption {
 }
 
 const PointSearch = () => {
-  const [searchName, setSearchName] = React.useState(null);
-  const [searchShape, setSearchShape] = React.useState(null);
-  const [searchSize, setSearchSize] = React.useState(null);
-  const [searchCulturalPeriod, setSearchCulturalPeriod] = React.useState(null);
-  const [searchValidity, setSearchValidity] = React.useState(null);
+  const [searchName, setSearchName] = React.useState([]);
+  const [searchShape, setSearchShape] = React.useState([]);
+  const [searchSize, setSearchSize] = React.useState([]);
+  const [searchCulturalPeriod, setSearchCulturalPeriod] = React.useState([]);
+  const [searchValidity, setSearchValidity] = React.useState([]);
   const [searchStates, setSearchStates] = React.useState([]);
 
   // Convert states to a single list of objs
@@ -96,20 +96,6 @@ const PointSearch = () => {
         <MenuItem value={30}>Thirty</MenuItem>
       </TextField>
 
-      {/* <TextField
-        // sx={{ width: "80%" }}
-        // fullWidth
-        select
-        value={searchShape}
-        label="Validity"
-        onChange={(e) => {
-          setSearchShape(e.target.value);
-        }}
-      >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
-      </TextField> */}
       <p>{JSON.stringify(searchShape)}</p>
       <Autocomplete
         multiple
