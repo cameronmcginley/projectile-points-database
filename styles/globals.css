@@ -62,3 +62,9 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Datagrid overflow wrap */
+.MuiDataGrid-root .MuiDataGrid-cell{
+  white-space: normal !important;
+  word-wrap: normal !important;
+  }

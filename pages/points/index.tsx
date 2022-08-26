@@ -14,17 +14,24 @@ const columns: GridColDef[] = [
   {
     field: "name",
     headerName: "Name",
-    flex: 1,
+    flex: 2,
     renderCell: (params) => (
       <a href={"/points/" + params.row.name_id}>{params.row.name}</a>
     ),
   },
-  { field: "shape", headerName: "Shape", flex: 1 },
+  {
+    field: "shape",
+    headerName: "Shape",
+    flex: 2,
+    renderCell: (params) => {
+      return params.row.shape.join(", ");
+    },
+  },
   { field: "size", headerName: "Size", flex: 1 },
   {
     field: "cultural_period",
     headerName: "Cultural Period",
-    flex: 1,
+    flex: 2,
     // cultural_period is array with 1 or 2 elements
     // 2 elements mean range of periods
     renderCell: (params) => {
