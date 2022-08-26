@@ -21,7 +21,24 @@ const columns: GridColDef[] = [
   },
   { field: "shape", headerName: "Shape", flex: 1 },
   { field: "size", headerName: "Size", flex: 1 },
-  { field: "cultural_period", headerName: "Cultural Period", flex: 1 },
+  {
+    field: "cultural_period",
+    headerName: "Cultural Period",
+    flex: 1,
+    // cultural_period is array with 1 or 2 elements
+    // 2 elements mean range of periods
+    renderCell: (params) => {
+      if (params.row.cultural_period.length > 1) {
+        return (
+          <p style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+            {params.row.cultural_period[0] +
+              " to " +
+              params.row.cultural_period[1]}
+          </p>
+        );
+      }
+    },
+  },
   { field: "point_validity", headerName: "Validity", flex: 1 },
 ];
 
@@ -38,6 +55,7 @@ const Courses: NextPageWithLayout = () => {
   const [pageSize, setPageSize] = React.useState<number>(30);
 
   const { data } = useQuery(["points"], () => getPoints());
+  console.log(data);
 
   return (
     <>
