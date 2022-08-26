@@ -5,13 +5,19 @@
 Table projectile_point {
   name_id String [pk]
   name String [not null]
+  shape String[] [not null]
   size String[] [not null]
   namers String[] [not null]
   named_for String
   year_identified Int
   type_site String
-  cultural_period cultural_period
-  cultural_periodId Int [not null]
+  glacial_period String[] [not null]
+  canadian_period String[] [not null]
+  cultural_period String[] [not null]
+  culture String[] [not null]
+  environment String[] [not null]
+  phase String[] [not null]
+  tradition String[] [not null]
   year_range_start Int
   year_range_start_type String
   year_range_end Int
@@ -28,7 +34,39 @@ Table projectile_point {
 Table cultural_period {
   id Int [pk, increment]
   name String
-  projectile_point projectile_point [not null]
 }
 
-Ref: projectile_point.cultural_periodId > cultural_period.id
+Table shape {
+  id Int [pk, increment]
+  name String
+}
+
+Table glacial_period {
+  id Int [pk, increment]
+  name String
+}
+
+Table canadian_period {
+  id Int [pk, increment]
+  name String
+}
+
+Table culture {
+  id Int [pk, increment]
+  name String
+}
+
+Table environment {
+  id Int [pk, increment]
+  name String
+}
+
+Table phase {
+  id Int [pk, increment]
+  name String
+}
+
+Table tradition {
+  id Int [pk, increment]
+  name String
+}

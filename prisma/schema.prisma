@@ -16,9 +16,9 @@ datasource db {
 }
 
 model projectile_point {
-  name_id               String           @id
+  name_id               String   @id
   name                  String
-  // shape                 shape[]
+  shape                 String[]
   size                  String[]
   // Name details
   namers                String[]
@@ -26,15 +26,13 @@ model projectile_point {
   year_identified       Int?
   type_site             String?
   // Background
-  // glacial_period        glacial_period[]
-  // canadian_period       canadian_period[]
-  // cultural_period       cultural_period[]
-  cultural_period       cultural_period? @relation(fields: [cultural_periodId], references: [id])
-  cultural_periodId     Int
-  // culture               culture[]
-  // environment           environment[]
-  // phase                 phase[]
-  // tradition             tradition[]
+  glacial_period        String[]
+  canadian_period       String[]
+  cultural_period       String[]
+  culture               String[]
+  environment           String[]
+  phase                 String[]
+  tradition             String[]
   year_range_start      Int?
   // BP or AD
   year_range_start_type String?
@@ -50,60 +48,44 @@ model projectile_point {
   description           String?
   // List of similar points, stores name_id's
   similar_point         String[]
-  // cultural_period       cultural_period[]
 }
 
 model cultural_period {
-  id               Int                @id @default(autoincrement())
-  name             String?
-  projectile_point projectile_point[]
+  id   Int     @id @default(autoincrement())
+  name String?
 }
 
-// model shape {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model shape {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model glacial_period {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model glacial_period {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model canadian_period {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model canadian_period {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model culture {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model culture {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model environment {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model environment {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model phase {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model phase {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
 
-// model tradition {
-//   projectile_point        projectile_point? @relation(fields: [projectile_pointName_id], references: [name_id])
-//   projectile_pointName_id String?
-//   id                      Int               @id @default(autoincrement())
-//   name                    String?
-// }
+model tradition {
+  id   Int     @id @default(autoincrement())
+  name String?
+}
