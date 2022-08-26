@@ -3,7 +3,7 @@ query getPoints {
     name
     name_id
     point_validity
-    culture
+    cultural_period
     shape
     size
   }

@@ -11,20 +11,20 @@ export class Point {
   @Field({ nullable: true })
   date_info: string;
 
-  @Field({ nullable: true })
-  culture: string;
+  @Field((type) => [String])
+  culture: string[];
 
-  @Field({ nullable: true })
-  tradition: string;
+  @Field((type) => [String])
+  tradition: string[];
 
-  @Field({ nullable: true })
-  phase: string;
+  @Field((type) => [String])
+  phase: string[];
 
-  @Field({ nullable: true })
-  glacial_period: string;
+  @Field((type) => [String])
+  glacial_period: string[];
 
-  @Field({ nullable: true })
-  cultural_period: string;
+  @Field((type) => [String])
+  cultural_period: string[];
 
   @Field({ nullable: true })
   description: string;
@@ -56,11 +56,11 @@ export class Point {
   @Field({ nullable: true })
   named_for: string;
 
-  @Field({ nullable: true })
-  shape: string;
+  @Field((type) => [String])
+  shape: string[];
 
-  @Field({ nullable: true })
-  size: string;
+  @Field((type) => [String])
+  size: string[];
 
   @Field({ nullable: true })
   point_validity: string;

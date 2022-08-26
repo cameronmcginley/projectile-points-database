@@ -21,7 +21,7 @@ const columns: GridColDef[] = [
   },
   { field: "shape", headerName: "Shape", flex: 1 },
   { field: "size", headerName: "Size", flex: 1 },
-  { field: "culture", headerName: "Cultural Period", flex: 1 },
+  { field: "cultural_period", headerName: "Cultural Period", flex: 1 },
   { field: "point_validity", headerName: "Validity", flex: 1 },
 ];
 
@@ -59,19 +59,21 @@ const Courses: NextPageWithLayout = () => {
         >
           <Grid item xs className="points-table">
             <Paper sx={{ height: "100%", p: 1 }}>
-              <DataGrid
-                autoHeight
-                disableSelectionOnClick
-                // Disables menu for filtering, hiding cols, etc.
-                disableColumnMenu
-                getRowId={(row) => row.name}
-                rows={data.points}
-                columns={columns}
-                // Handle table size for changing height
-                rowsPerPageOptions={[10, 30, 50, 100]}
-                onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                pageSize={pageSize}
-              />
+              {data && (
+                <DataGrid
+                  autoHeight
+                  disableSelectionOnClick
+                  // Disables menu for filtering, hiding cols, etc.
+                  disableColumnMenu
+                  getRowId={(row) => row.name}
+                  rows={data.points}
+                  columns={columns}
+                  // Handle table size for changing height
+                  rowsPerPageOptions={[10, 30, 50, 100]}
+                  onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                  pageSize={pageSize}
+                />
+              )}
             </Paper>
           </Grid>
           <Grid item className="points-search">
