@@ -5,18 +5,13 @@
 Table projectile_point {
   name_id String [pk]
   name String [not null]
-  shape String [not null]
-  size String [not null]
+  size String[] [not null]
   namers String[] [not null]
   named_for String
   year_identified Int
   type_site String
-  glacial_period String
-  canadian_period String
-  cultural_period String
-  culture String
-  phase String
-  tradition String
+  cultural_period cultural_period
+  cultural_periodId Int [not null]
   year_range_start Int
   year_range_start_type String
   year_range_end Int
@@ -29,3 +24,11 @@ Table projectile_point {
   description String
   similar_point String[] [not null]
 }
+
+Table cultural_period {
+  id Int [pk, increment]
+  name String
+  projectile_point projectile_point [not null]
+}
+
+Ref: projectile_point.cultural_periodId > cultural_period.id
