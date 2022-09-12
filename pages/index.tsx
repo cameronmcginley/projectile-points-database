@@ -4,38 +4,39 @@ import styles from "../styles/Home.module.css";
 import LayoutNavbar from "../components/layouts/navbar";
 import Card from "../components/Card";
 import ContainerCards from "../components/ContainerCards";
+import ContainerContent from "../components/ContainerContent";
+import ReactMarkdown from "react-markdown";
+import { Box, Typography } from "@mui/material";
 
 const Home: NextPageWithLayout = () => {
   return (
     <>
-      <ContainerCards
-        cards={[
-          {
-            title: "Courses",
-            description:
-              "Create and view courses and sort by semester, department, level, time, or others.",
-            link: "/courses",
-          },
-          {
-            title: "Departments",
-            description:
-              "View all departments with the ability to modify them or create new ones.",
-            link: "/departments",
-          },
-          {
-            title: "Faculty",
-            description:
-              "View and sort through the list of current and past faculty.",
-            link: "/faculty",
-          },
-          {
-            title: "Students",
-            description:
-              "View and sort through the list of current and past students.",
-            link: "/students",
-          },
-        ]}
-      />
+      <ContainerContent bg={true}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <p className="text-title">Title</p>
+        </Box>
+        <ReactMarkdown>test</ReactMarkdown>
+        {/* <ContainerCards
+          cards={[
+            {
+              title: "Search",
+              description:
+                "Search through North American projectile points, and filter through them by fields such as shape or size.",
+              link: "/points",
+            },
+            {
+              title: "Uploade",
+              description: "Upload new projectile points onto this website.",
+              link: "/points/upload",
+            },
+          ]}
+        /> */}
+      </ContainerContent>
     </>
   );
 };

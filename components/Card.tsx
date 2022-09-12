@@ -17,6 +17,7 @@ const CardComponent = (props: CardProps) => {
   return (
     <Card
       component={"a"}
+      variant="outlined"
       href={props.data.link}
       sx={{
         textDecoration: "none",

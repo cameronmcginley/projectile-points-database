@@ -22,22 +22,7 @@ const Navbar = () => {
         }}
       >
         {/* Title */}
-        <Typography
-          variant="h6"
-          noWrap
-          component="a"
-          // href="/"
-          sx={{
-            fontWeight: 700,
-            color: theme.palette.text,
-            textDecoration: "none",
-            // "&:hover": {
-            //   color: theme.palette.primary.main,
-            // },
-          }}
-        >
-          Projectile Points Revamped
-        </Typography>
+        <p className="text-title">Projectile Points Revamped</p>
       </Box>
 
       {/* Links */}
