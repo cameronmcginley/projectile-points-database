@@ -87,18 +87,7 @@ const Courses: NextPageWithLayout = () => {
                   flexDirection: "column",
                 }}
               >
-                <Typography
-                  variant="h6"
-                  noWrap
-                  component="a"
-                  sx={{
-                    fontWeight: 700,
-                    color: theme.palette.text,
-                    textDecoration: "none",
-                  }}
-                >
-                  Projectile Points
-                </Typography>
+                <p className="text-title">Projectile Points</p>
                 <p>Select the three dots to filter columns.</p>
               </Box>
 
