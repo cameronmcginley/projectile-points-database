@@ -1,7 +1,6 @@
 import type { NextPageWithLayout } from "./_app";
 import type { ReactElement } from "react";
-import LayoutMain from "../components/layouts/main";
-import LayoutData from "../components/layouts/data";
+import LayoutNavbar from "../components/layouts/navbar";
 
 const Courses: NextPageWithLayout = () => {
   return (
@@ -12,7 +11,7 @@ const Courses: NextPageWithLayout = () => {
 };
 
 Courses.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutData>{page}</LayoutData>;
+  return <LayoutNavbar>{page}</LayoutNavbar>;
 };
 
 export default Courses;

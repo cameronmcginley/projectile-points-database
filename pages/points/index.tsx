@@ -2,7 +2,7 @@ import React from "react";
 import theme from "../../components/palette";
 import type { NextPageWithLayout } from "../_app";
 import type { ReactElement } from "react";
-import LayoutData from "../../components/layouts/data";
+import LayoutNavbar from "../../components/layouts/navbar";
 
 import { dehydrate, useQuery } from "react-query";
 import { queryClient, getPoints } from "../../src/api";
@@ -130,7 +130,7 @@ const Courses: NextPageWithLayout = () => {
 };
 
 Courses.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutData>{page}</LayoutData>;
+  return <LayoutNavbar>{page}</LayoutNavbar>;
 };
 
 export default Courses;
