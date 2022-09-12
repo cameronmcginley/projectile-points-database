@@ -1,4 +1,5 @@
 import React from "react";
+import theme from "../../components/palette";
 import type { NextPageWithLayout } from "../_app";
 import type { ReactElement } from "react";
 import LayoutData from "../../components/layouts/data";
@@ -66,13 +67,6 @@ const Courses: NextPageWithLayout = () => {
 
   return (
     <>
-      {/* <p>Points Index</p> */}
-      {/* {data.points.map((item) => {
-        return <p>{item.name}</p>;
-      })} */}
-      {/* <div>{JSON.stringify(data)}</div> */}
-      {/* <Box sx={{ display: "flex", width: "90%" }}> */}
-
       <Box sx={{ display: "flex", justifyContent: "center", mt: "2rem" }}>
         <Grid
           container
@@ -84,12 +78,37 @@ const Courses: NextPageWithLayout = () => {
         >
           <Grid item xs className="points-table">
             <Paper sx={{ height: "100%", p: 1 }}>
+              {/* Title */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  sx={{
+                    fontWeight: 700,
+                    color: theme.palette.text,
+                    textDecoration: "none",
+                  }}
+                >
+                  Projectile Points
+                </Typography>
+                <p>Select the three dots to filter columns.</p>
+              </Box>
+
+              {/* Datagrid */}
               {data && (
                 <DataGrid
                   autoHeight
                   disableSelectionOnClick
                   // Disables menu for filtering, hiding cols, etc.
-                  disableColumnMenu
+                  // disableColumnMenu
                   getRowId={(row) => row.name}
                   rows={data.points}
                   columns={columns}
@@ -101,9 +120,9 @@ const Courses: NextPageWithLayout = () => {
               )}
             </Paper>
           </Grid>
-          <Grid item className="points-search">
+          {/* <Grid item className="points-search">
             <PointSearchPanel />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Box>
     </>

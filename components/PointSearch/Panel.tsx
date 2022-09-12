@@ -67,11 +67,10 @@ const Panel = () => {
         </Typography>
       </Box>
       <TextField options={state_options} label={"Name"} />
-      <Dropdown options={state_options} label={"State"} />
+      {/* <Dropdown options={state_options} label={"State"} /> */}
       <Dropdown options={state_options} label={"Shape"} />
       <Dropdown options={state_options} label={"Size"} />
       <Dropdown options={state_options} label={"Cultural Period"} />
-      <Dropdown options={state_options} label={"State"} />
     </Paper>
   );
 };
