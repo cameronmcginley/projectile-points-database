@@ -8,7 +8,7 @@ import { queryClient, getPoints } from "../../src/api";
 
 import { AppBar, Box, Typography, Container, Grid, Paper } from "@mui/material";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import PointSearch from "../../components/PointSearch";
+import PointSearchPanel from "../../components/PointSearch/Panel";
 
 const columns: GridColDef[] = [
   {
@@ -102,7 +102,7 @@ const Courses: NextPageWithLayout = () => {
             </Paper>
           </Grid>
           <Grid item className="points-search">
-            <PointSearch />
+            <PointSearchPanel />
           </Grid>
         </Grid>
       </Box>
