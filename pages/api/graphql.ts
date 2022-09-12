@@ -3,11 +3,10 @@ import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 
 // Resolvers
-import { CourseResolver } from "../../src/schema/course.resolver";
 import { PointResolver } from "../../src/schema/point.resolver";
 
 const schema = await buildSchema({
-  resolvers: [CourseResolver, PointResolver],
+  resolvers: [PointResolver],
 });
 
 const server = new ApolloServer({

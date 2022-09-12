@@ -1,5 +1,0 @@
-query getCourses {
-  courses {
-    name
-  }
-}

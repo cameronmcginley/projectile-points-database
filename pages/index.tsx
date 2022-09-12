@@ -4,20 +4,8 @@ import styles from "../styles/Home.module.css";
 import LayoutMain from "../components/layouts/main";
 import Card from "../components/Card";
 import ContainerCards from "../components/ContainerCards";
-import { dehydrate, useQuery } from "react-query";
-import { queryClient, getCourses } from "../src/api";
-
-export async function getServerSideProps() {
-  await queryClient.prefetchQuery("courses", () => getCourses());
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
-}
 
 const Home: NextPageWithLayout = () => {
-  const { data } = useQuery(["courses"], () => getCourses());
   return (
     <>
       <ContainerCards
@@ -48,11 +36,11 @@ const Home: NextPageWithLayout = () => {
           },
         ]}
       />
-      <div>
+      {/* <div>
         {data.courses.map((item) => {
           return <p>{item.name}</p>;
         })}
-      </div>
+      </div> */}
     </>
   );
 };

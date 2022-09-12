@@ -9,9 +9,7 @@ const gqlClient = new GraphQLClient("http://localhost:3000/api/graphql");
 export const {
   getPoints,
   getPointByName,
-  getCourses,
-  getCourseByID,
-  createCourse,
+  // createCourse,
 } = getSdk(gqlClient);
 
 // Shared between server and client

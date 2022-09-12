@@ -15,31 +15,6 @@ export type Scalars = {
   Float: number;
 };
 
-export type Course = {
-  __typename?: 'Course';
-  id: Scalars['ID'];
-  instructor_id: Scalars['Float'];
-  name: Scalars['String'];
-  semesters: Array<Scalars['String']>;
-};
-
-/** New course */
-export type CreateNewCourse = {
-  instructor_id: Scalars['Float'];
-  name: Scalars['String'];
-  semesters: Array<Scalars['String']>;
-};
-
-export type Mutation = {
-  __typename?: 'Mutation';
-  createCourse?: Maybe<Course>;
-};
-
-
-export type MutationCreateCourseArgs = {
-  data: CreateNewCourse;
-};
-
 export type Point = {
   __typename?: 'Point';
   aka: Array<Scalars['String']>;
@@ -67,38 +42,14 @@ export type Point = {
 
 export type Query = {
   __typename?: 'Query';
-  course?: Maybe<Course>;
-  courses: Array<Course>;
   point?: Maybe<Point>;
   points: Array<Point>;
-};
-
-
-export type QueryCourseArgs = {
-  id: Scalars['Int'];
 };
 
 
 export type QueryPointArgs = {
   name_id: Scalars['String'];
 };
-
-export type GetCourseByIdQueryVariables = Exact<{
-  id: Scalars['Int'];
-}>;
-
-
-export type GetCourseByIdQuery = { __typename?: 'Query', course?: { __typename?: 'Course', name: string } | null };
-
-export type CreateCourseMutationVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CreateCourseMutation = { __typename?: 'Mutation', createCourse?: { __typename?: 'Course', name: string, instructor_id: number, semesters: Array<string> } | null };
-
-export type GetCoursesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetCoursesQuery = { __typename?: 'Query', courses: Array<{ __typename?: 'Course', name: string }> };
 
 export type GetPointByNameQueryVariables = Exact<{
   name: Scalars['String'];
@@ -113,31 +64,6 @@ export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 export type GetPointsQuery = { __typename?: 'Query', points: Array<{ __typename?: 'Point', name: string, name_id: string, point_validity?: string | null, cultural_period: Array<string>, shape: Array<string>, size: Array<string> }> };
 
 
-export const GetCourseByIdDocument = gql`
-    query getCourseByID($id: Int!) {
-  course(id: $id) {
-    name
-  }
-}
-    `;
-export const CreateCourseDocument = gql`
-    mutation createCourse {
-  createCourse(
-    data: {name: "Google Pixel", instructor_id: 1, semesters: ["FALL 2022"]}
-  ) {
-    name
-    instructor_id
-    semesters
-  }
-}
-    `;
-export const GetCoursesDocument = gql`
-    query getCourses {
-  courses {
-    name
-  }
-}
-    `;
 export const GetPointByNameDocument = gql`
     query getPointByName($name: String!) {
   point(name_id: $name) {
@@ -181,15 +107,6 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
-    getCourseByID(variables: GetCourseByIdQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCourseByIdQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCourseByIdQuery>(GetCourseByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourseByID', 'query');
-    },
-    createCourse(variables?: CreateCourseMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateCourseMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<CreateCourseMutation>(CreateCourseDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createCourse', 'mutation');
-    },
-    getCourses(variables?: GetCoursesQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetCoursesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<GetCoursesQuery>(GetCoursesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getCourses', 'query');
-    },
     getPointByName(variables: GetPointByNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointByNameQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPointByNameQuery>(GetPointByNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPointByName', 'query');
     },

@@ -1,5 +1,0 @@
-query getCourseByID($id: Int!) {
-  course(id: $id) {
-    name
-  }
-}
