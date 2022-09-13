@@ -1,24 +1,9 @@
 import React from "react";
-import {
-  Box,
-  Paper,
-  TextField,
-  Select,
-  SelectChangeEvent,
-  MenuItem,
-  InputLabel,
-  Autocomplete,
-  FormControl,
-  Input,
-  Chip,
-  InputAdornment,
-} from "@mui/material";
+import { TextField, Chip, InputAdornment } from "@mui/material";
 
 const Dropdown = (props) => {
-  // const [selection, setSelection] = React.useState("");
-  //   const classes = React.useStyles();
   const [values, setValues] = React.useState([]);
-  const [currValue, setCurrValue] = React.useState("");
+  const [currValue, setCurrValue] = React.useState();
 
   const handleKeyUp = (e) => {
     // console.log(e.keyCode);
@@ -49,6 +34,7 @@ const Dropdown = (props) => {
         value={currValue}
         onChange={handleChange}
         onKeyDown={handleKeyUp}
+        InputLabelProps={{ shrink: true }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -56,7 +42,6 @@ const Dropdown = (props) => {
                 <div>
                   {values.map((item, index) => (
                     <Chip
-                      //   size="small"
                       key={index}
                       onDelete={() => handleDelete(item, index)}
                       label={item}

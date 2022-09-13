@@ -25,7 +25,13 @@ const Dropdown = (props) => {
         // onChange={(e, new_val) => {
         //   setSelections(new_val);
         // }}
-        renderInput={(params) => <TextField {...params} label={props.label} />}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={props.label}
+            InputLabelProps={{ shrink: true }}
+          />
+        )}
         onChange={props.onChange}
       />
     </>

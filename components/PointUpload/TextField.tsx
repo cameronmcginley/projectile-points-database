@@ -24,6 +24,10 @@ const Dropdown = (props) => {
         //   setSelection(e.target.value);
         // }}
         onChange={props.onChange}
+        InputLabelProps={{ shrink: true }}
+        required={props.required}
+        multiline={props.multiline}
+        rows={4}
       />
     </>
   );
