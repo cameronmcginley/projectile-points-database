@@ -1,0 +1,16 @@
+export const cultural_period: string[] = [
+  "Pueblo I",
+  "Pueblo II",
+  "Archaic",
+  "Early Archaic",
+  "Middle Archaic",
+  "Late Archaic",
+  "Transitional Archaic",
+  "Woodland",
+  "Early Woodland",
+  "Middle Woodland",
+  "Late Woodland",
+  "Mississippian",
+  "Preclassic",
+  "Paleo",
+];

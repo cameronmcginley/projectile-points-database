@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import { countries } from "../../constants/countries";
-import { shapes } from "../../constants/shapes";
+import { shapes } from "../../constants/shape";
 import StatesMap from "../StatesMap";
 import Dropdown from "./Dropdown";
 import TextField from "./TextField";

@@ -16,6 +16,11 @@ import {
 import Dropdown from "./Dropdown";
 import CustomTextField from "./TextField";
 import MultiTextField from "./MultiTextField";
+import { cultural_period } from "../../constants/cultural_period";
+import { glacial_period } from "../../constants/glacial_period";
+import { point_validity } from "../../constants/point_validity";
+import { shape } from "../../constants/shape";
+import { size } from "../../constants/size";
 
 const Panel = () => {
   const [point_name, set_point_name] = React.useState("");
@@ -46,6 +51,18 @@ const Panel = () => {
   const [point_point_validity, set_point_point_validity] = React.useState("");
   const [point_description, set_point_description] = React.useState("");
   // const [point_similar_point, set_point_similar_point] = React.useState([]);
+
+  const checkValidSubmission = () => {
+    return point_name != "";
+  };
+
+  const handleSubmit = () => {
+    // Check valid
+    if (!checkValidSubmission()) {
+      console.log("Error Submitting");
+      return;
+    }
+  };
 
   return (
     <>
@@ -79,7 +96,7 @@ const Panel = () => {
             onChange={(e, new_val) => {
               set_point_shape(new_val);
             }}
-            options={["1", "2", "3"]}
+            options={shape}
           />
 
           <Dropdown
@@ -87,7 +104,7 @@ const Panel = () => {
             onChange={(e, new_val) => {
               set_point_size(new_val);
             }}
-            options={["1", "2", "3"]}
+            options={size}
           />
 
           <MultiTextField
@@ -123,7 +140,7 @@ const Panel = () => {
             onChange={(e, new_val) => {
               set_point_glacial_period(new_val);
             }}
-            options={["1", "2", "3"]}
+            options={glacial_period}
           />
 
           <Dropdown
@@ -131,7 +148,7 @@ const Panel = () => {
             onChange={(e, new_val) => {
               set_point_cultural_period(new_val);
             }}
-            options={["1", "2", "3"]}
+            options={cultural_period}
           />
 
           {/* Column Two */}
@@ -205,14 +222,6 @@ const Panel = () => {
             }}
           />
 
-          {/*
-            <MenuItem value={"Valid Type"}>Valid</MenuItem>
-            <MenuItem value={"Collector Type"}>Collector</MenuItem>
-            <MenuItem value={"Provisional Type"}>Provisional</MenuItem>
-            <MenuItem value={"Variant Type"}>Variant</MenuItem>
-            <MenuItem value={"AKA Type"}>AKA</MenuItem>
-            <MenuItem value={"Cultural Type"}>Cultural</MenuItem>
-        */}
           <TextField
             select
             value={point_point_validity}
@@ -222,12 +231,13 @@ const Panel = () => {
             label="Point Validity"
             InputLabelProps={{ shrink: true }}
           >
-            <MenuItem key={1} value="test">
-              Test 1
-            </MenuItem>
-            <MenuItem key={2} value="test2">
-              Test 2
-            </MenuItem>
+            {point_validity.map((item) => {
+              return (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              );
+            })}
           </TextField>
 
           <CustomTextField
@@ -239,14 +249,7 @@ const Panel = () => {
           />
 
           {/* Submit button */}
-          <Button
-            onClick={() => {
-              // alert("test");
-              console.log(point_namers);
-            }}
-          >
-            Submit
-          </Button>
+          <Button onClick={handleSubmit}>Submit</Button>
         </Box>
       </Box>
     </>
