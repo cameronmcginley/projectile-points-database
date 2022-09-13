@@ -11,21 +11,22 @@ import {
 } from "@mui/material";
 
 const Dropdown = (props) => {
-  const [selections, setSelections] = React.useState([]);
+  // const [selections, setSelections] = React.useState([]);
 
   return (
     <>
-      <p>{JSON.stringify(selections)}</p>
+      {/* <p>{JSON.stringify(selections)}</p> */}
       <Autocomplete
         multiple
         disableCloseOnSelect
         options={props.options}
-        getOptionLabel={(option) => option.state_name}
-        groupBy={(option) => option.country_name}
-        onChange={(e, new_val) => {
-          setSelections(new_val);
-        }}
+        // getOptionLabel={(option) => option.state_name}
+        // groupBy={(option) => option.country_name}
+        // onChange={(e, new_val) => {
+        //   setSelections(new_val);
+        // }}
         renderInput={(params) => <TextField {...params} label={props.label} />}
+        onChange={props.onChange}
       />
     </>
   );
