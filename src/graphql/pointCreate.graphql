@@ -1,0 +1,7 @@
+mutation createPoint { # Name of gql query
+  createPoint( # name of resolver to use
+    data: { name: "Google Pixel" }
+  ) {
+    name
+  }
+}

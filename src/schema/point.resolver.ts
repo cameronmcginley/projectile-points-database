@@ -1,5 +1,5 @@
 import { Resolver, Mutation, Query, Arg, Int, Ctx } from "type-graphql";
-import { Point } from "./point";
+import { Point, CreateNewPoint } from "./point";
 
 // Use prisma for db connection
 import { PrismaClient } from "@prisma/client";
@@ -25,5 +25,17 @@ export class PointResolver {
   @Query(() => [Point])
   async points() {
     return prisma.projectile_point.findMany();
+  }
+
+  // Create new point
+  @Mutation((data) => Point, { nullable: true })
+  async createPoint(@Arg("data") newPointData: CreateNewPoint): Point {
+    // https://www.prisma.io/docs/concepts/components/prisma-client/crud
+    const point = await prisma.projectile_point.create({
+      data: {
+        name: newPointData.name,
+      },
+    });
+    return point;
   }
 }

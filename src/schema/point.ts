@@ -65,3 +65,9 @@ export class Point {
   @Field({ nullable: true })
   point_validity: string;
 }
+
+@InputType({ description: "New point" })
+export class CreateNewPoint implements Partial<Point> {
+  @Field()
+  name!: string;
+}
