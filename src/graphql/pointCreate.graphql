@@ -1,7 +1,8 @@
 mutation createPoint { # Name of gql query
   createPoint( # name of resolver to use
-    data: { name: "Google Pixel" }
+    data: { name_id: "google_pixel", name: "Google Pixel" }
   ) {
+    name_id
     name
   }
 }

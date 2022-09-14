@@ -70,4 +70,6 @@ export class Point {
 export class CreateNewPoint implements Partial<Point> {
   @Field()
   name!: string;
+  @Field()
+  name_id!: string;
 }

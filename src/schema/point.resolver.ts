@@ -34,6 +34,7 @@ export class PointResolver {
     const point = await prisma.projectile_point.create({
       data: {
         name: newPointData.name,
+        name_id: newPointData.name_id,
       },
     });
     return point;

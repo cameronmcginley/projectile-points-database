@@ -21,6 +21,7 @@ import { glacial_period } from "../../constants/glacial_period";
 import { point_validity } from "../../constants/point_validity";
 import { shape } from "../../constants/shape";
 import { size } from "../../constants/size";
+import { queryClient, createPoint } from "../../src/api";
 
 const Panel = () => {
   const [point_name, set_point_name] = React.useState("");
@@ -52,6 +53,13 @@ const Panel = () => {
   const [point_description, set_point_description] = React.useState("");
   // const [point_similar_point, set_point_similar_point] = React.useState([]);
 
+  const uploadNewPoint = async () => {
+    // Generate Name ID from input name
+    //
+
+    await queryClient.fetchQuery("createPoint", () => createPoint());
+  };
+
   const checkValidSubmission = () => {
     return point_name != "";
   };
@@ -62,6 +70,8 @@ const Panel = () => {
       console.log("Error Submitting");
       return;
     }
+    uploadNewPoint();
+    console.log("Submitted!");
   };
 
   return (

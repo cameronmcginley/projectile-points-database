@@ -4,7 +4,7 @@ import type { ReactElement } from "react";
 import LayoutNavbar from "../../components/layouts/navbar";
 import { AppBar, Box, Typography, Container, Grid, Paper } from "@mui/material";
 import ContainerContent from "../../components/ContainerContent";
-import Panel from "../../components/PointUpload/Panel";
+import PointUploadPanel from "../../components/PointUpload/Panel";
 
 const Upload: NextPageWithLayout = () => {
   return (
@@ -25,7 +25,7 @@ const Upload: NextPageWithLayout = () => {
           }}
         >
           <p className="text-title">Create New Projectile Point</p>
-          <Panel />
+          <PointUploadPanel />
         </Paper>
       </Box>
     </>

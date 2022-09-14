@@ -15,6 +15,22 @@ export type Scalars = {
   Float: number;
 };
 
+/** New point */
+export type CreateNewPoint = {
+  name: Scalars['String'];
+  name_id: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createPoint?: Maybe<Point>;
+};
+
+
+export type MutationCreatePointArgs = {
+  data: CreateNewPoint;
+};
+
 export type Point = {
   __typename?: 'Point';
   aka: Array<Scalars['String']>;
@@ -58,6 +74,11 @@ export type GetPointByNameQueryVariables = Exact<{
 
 export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture: Array<string>, tradition: Array<string>, phase: Array<string>, glacial_period: Array<string>, cultural_period: Array<string>, description?: string | null, aka: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null } | null };
 
+export type CreatePointMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CreatePointMutation = { __typename?: 'Mutation', createPoint?: { __typename?: 'Point', name_id: string, name: string } | null };
+
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -87,6 +108,14 @@ export const GetPointByNameDocument = gql`
   }
 }
     `;
+export const CreatePointDocument = gql`
+    mutation createPoint {
+  createPoint(data: {name_id: "google_pixel", name: "Google Pixel"}) {
+    name_id
+    name
+  }
+}
+    `;
 export const GetPointsDocument = gql`
     query getPoints {
   points {
@@ -109,6 +138,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     getPointByName(variables: GetPointByNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointByNameQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPointByNameQuery>(GetPointByNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPointByName', 'query');
+    },
+    createPoint(variables?: CreatePointMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreatePointMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<CreatePointMutation>(CreatePointDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPoint', 'mutation');
     },
     getPoints(variables?: GetPointsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPointsQuery>(GetPointsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPoints', 'query');
