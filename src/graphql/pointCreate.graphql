@@ -1,6 +1,6 @@
-mutation createPoint { # Name of gql query
+mutation createPoint($name_id: String!, $name: String!) { # Name of gql query
   createPoint( # name of resolver to use
-    data: { name_id: "google_pixel", name: "Google Pixel" }
+    data: { name_id: $name_id, name: $name }
   ) {
     name_id
     name

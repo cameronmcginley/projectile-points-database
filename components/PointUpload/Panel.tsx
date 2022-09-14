@@ -59,8 +59,10 @@ const Panel = () => {
     let point_name_id = point_name.replace(" ", "_");
     point_name_id = point_name_id.replace(/[^a-z0-9]/gi, "");
     point_name_id = point_name_id.toLowerCase();
-
-    await queryClient.fetchQuery("createPoint", () => createPoint());
+    console.log(point_name_id, point_name);
+    await queryClient.fetchQuery("createPoint", () =>
+      createPoint({ name_id: point_name_id, name: point_name })
+    );
   };
 
   const checkValidSubmission = () => {

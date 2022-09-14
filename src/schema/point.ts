@@ -69,7 +69,7 @@ export class Point {
 @InputType({ description: "New point" })
 export class CreateNewPoint implements Partial<Point> {
   @Field()
-  name!: string;
-  @Field()
   name_id!: string;
+  @Field()
+  name!: string;
 }

@@ -31,10 +31,11 @@ export class PointResolver {
   @Mutation((data) => Point, { nullable: true })
   async createPoint(@Arg("data") newPointData: CreateNewPoint): Point {
     // https://www.prisma.io/docs/concepts/components/prisma-client/crud
+    // TODO: Return error to user if name_id not unique, and link them to it
     const point = await prisma.projectile_point.create({
       data: {
-        name: newPointData.name,
         name_id: newPointData.name_id,
+        name: newPointData.name,
       },
     });
     return point;
