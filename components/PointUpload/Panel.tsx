@@ -55,7 +55,10 @@ const Panel = () => {
 
   const uploadNewPoint = async () => {
     // Generate Name ID from input name
-    //
+    // Remove non alphanumeric, set to lowercase, replace space with _
+    let point_name_id = point_name.replace(" ", "_");
+    point_name_id = point_name_id.replace(/[^a-z0-9]/gi, "");
+    point_name_id = point_name_id.toLowerCase();
 
     await queryClient.fetchQuery("createPoint", () => createPoint());
   };
