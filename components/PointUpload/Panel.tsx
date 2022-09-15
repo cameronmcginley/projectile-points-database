@@ -62,7 +62,26 @@ const Panel = () => {
 
     // Send data
     await queryClient.fetchQuery("createPoint", () =>
-      createPoint({ name_id: point_name_id, name: point_name })
+      createPoint({
+        name_id: point_name_id,
+        name: point_name,
+        shape: point_shape,
+        size: point_size,
+        namers: point_namers,
+        named_for: point_named_for,
+        year_identified: point_year_identified,
+        type_site: point_type_site,
+        glacial_period: point_glacial_period,
+        cultural_period: point_cultural_period,
+        year_range_start: point_year_range_start,
+        year_range_start_type: point_year_range_start_type,
+        year_range_end: point_year_range_end,
+        year_range_end_type: point_year_range_end_type,
+        short_for: point_short_for,
+        aka: point_aka,
+        point_validity: point_point_validity,
+        description: point_description,
+      })
     );
   };
 
