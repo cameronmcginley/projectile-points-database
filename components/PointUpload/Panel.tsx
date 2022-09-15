@@ -143,7 +143,7 @@ const Panel = () => {
           />
 
           <MultiTextField
-            label={"Named By (Press Enter to Separate Names)"}
+            label={"Named By (Press Enter After Each)"}
             returnValues={(values) => {
               set_point_namers(values);
             }}
@@ -226,7 +226,7 @@ const Panel = () => {
             />
 
             <Select
-              value={point_year_range_start_type}
+              value={point_year_range_end_type}
               onChange={(e: SelectChangeEvent) => {
                 set_point_year_range_end_type(e.target.value);
               }}
@@ -251,7 +251,7 @@ const Panel = () => {
           />
 
           <MultiTextField
-            label={"AKA (Press Enter to Separate Multiple)"}
+            label={"AKA (Press Enter After Each)"}
             returnValues={(values) => {
               set_point_aka(values);
             }}

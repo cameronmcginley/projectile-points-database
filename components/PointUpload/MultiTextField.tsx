@@ -35,6 +35,7 @@ const Dropdown = (props: any) => {
         onChange={handleChange}
         onKeyDown={handleKeyUp}
         InputLabelProps={{ shrink: true }}
+        sx={{ width: "20rem" }}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">

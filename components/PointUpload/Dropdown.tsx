@@ -30,6 +30,7 @@ const Dropdown = (props: any) => {
             {...params}
             label={props.label}
             InputLabelProps={{ shrink: true }}
+            sx={{ width: "20rem" }}
           />
         )}
         onChange={props.onChange}
