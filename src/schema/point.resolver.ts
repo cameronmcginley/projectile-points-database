@@ -36,6 +36,22 @@ export class PointResolver {
       data: {
         name_id: newPointData.name_id,
         name: newPointData.name,
+        shape: newPointData.shape,
+        size: newPointData.size,
+        namers: newPointData.namers,
+        named_for: newPointData.named_for,
+        year_identified: newPointData.year_identified,
+        type_site: newPointData.type_site,
+        glacial_period: newPointData.glacial_period,
+        cultural_period: newPointData.cultural_period,
+        year_range_start: newPointData.year_range_start,
+        year_range_start_type: newPointData.year_range_start_type,
+        year_range_end: newPointData.year_range_end,
+        year_range_end_type: newPointData.year_range_end_type,
+        short_for: newPointData.short_for,
+        aka: newPointData.aka,
+        point_validity: newPointData.point_validity,
+        description: newPointData.description,
       },
     });
     return point;

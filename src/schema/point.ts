@@ -64,12 +64,64 @@ export class Point {
 
   @Field({ nullable: true })
   point_validity: string;
+
+  @Field({ nullable: true })
+  short_for: string;
 }
 
 @InputType({ description: "New point" })
 export class CreateNewPoint implements Partial<Point> {
   @Field()
   name_id!: string;
+
   @Field()
   name!: string;
+
+  @Field((type) => [String])
+  shape: string[];
+
+  @Field((type) => [String])
+  size: string[];
+
+  @Field((type) => [String])
+  namers: string[];
+
+  @Field({ nullable: true })
+  named_for: string;
+
+  @Field({ nullable: true })
+  year_identified: number;
+
+  @Field({ nullable: true })
+  type_site: string;
+
+  @Field((type) => [String])
+  glacial_period: string[];
+
+  @Field((type) => [String])
+  cultural_period: string[];
+
+  @Field({ nullable: true })
+  year_range_start: number;
+
+  @Field({ nullable: true })
+  year_range_start_type: string;
+
+  @Field({ nullable: true })
+  year_range_end: number;
+
+  @Field({ nullable: true })
+  year_range_end_type: string;
+
+  @Field({ nullable: true })
+  short_for: string;
+
+  @Field((type) => [String])
+  aka: string[];
+
+  @Field({ nullable: true })
+  point_validity: string;
+
+  @Field({ nullable: true })
+  description: string;
 }
