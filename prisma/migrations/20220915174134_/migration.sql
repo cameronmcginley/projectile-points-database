@@ -1,0 +1,31 @@
+-- CreateTable
+CREATE TABLE "projectile_point" (
+    "name_id" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+    "shape" TEXT[],
+    "size" TEXT[],
+    "namers" TEXT[],
+    "named_for" TEXT,
+    "year_identified" INTEGER,
+    "type_site" TEXT,
+    "glacial_period" TEXT[],
+    "canadian_period" TEXT[],
+    "cultural_period" TEXT[],
+    "culture" TEXT[],
+    "environment" TEXT[],
+    "phase" TEXT[],
+    "tradition" TEXT[],
+    "year_range_start" INTEGER,
+    "year_range_start_type" TEXT,
+    "year_range_end" INTEGER,
+    "year_range_end_type" TEXT,
+    "variant" TEXT,
+    "short_for" TEXT,
+    "aka" TEXT[],
+    "cluster" TEXT,
+    "point_validity" TEXT,
+    "description" TEXT,
+    "similar_point" TEXT[],
+
+    CONSTRAINT "projectile_point_pkey" PRIMARY KEY ("name_id")
+);

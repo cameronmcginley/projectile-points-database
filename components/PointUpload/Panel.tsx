@@ -59,7 +59,8 @@ const Panel = () => {
     let point_name_id = point_name.replace(" ", "_");
     point_name_id = point_name_id.replace(/[^a-z0-9]/gi, "");
     point_name_id = point_name_id.toLowerCase();
-    console.log(point_name_id, point_name);
+
+    // Send data
     await queryClient.fetchQuery("createPoint", () =>
       createPoint({ name_id: point_name_id, name: point_name })
     );

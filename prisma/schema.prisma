@@ -50,42 +50,42 @@ model projectile_point {
   similar_point         String[]
 }
 
-model cultural_period {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model cultural_period {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model shape {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model shape {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model glacial_period {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model glacial_period {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model canadian_period {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model canadian_period {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model culture {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model culture {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model environment {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model environment {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model phase {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model phase {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
 
-model tradition {
-  id   Int     @id @default(autoincrement())
-  name String?
-}
+// model tradition {
+//   id   Int     @id @default(autoincrement())
+//   name String?
+// }
