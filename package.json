@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pretty": "prettier --write **/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
+    "pretty": "prettier --write **/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
