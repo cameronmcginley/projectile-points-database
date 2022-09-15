@@ -1,22 +1,22 @@
 mutation createPoint( # Name of gql query
   $name_id: String!, 
-  $name: String!
-  $shape: string[];
-  $size: string[];
-  $namers: string[];
-  $named_for: string;
-  $year_identified: number;
-  $type_site: string;
-  $glacial_period: string[];
-  $cultural_period: string[];
-  $year_range_start: number;
-  $year_range_start_type: string;
-  $year_range_end: number;
-  $year_range_end_type: string;
-  $short_for: string;
-  $aka: string[];
-  $point_validity: string;
-  $description: string;
+  $name: String!,
+  $shape: [String!]!,
+  $size: [String!]!,
+  $namers: [String!]!,
+  $named_for: String,
+  $year_identified: Float,
+  $type_site: String,
+  $glacial_period: [String!]!,
+  $cultural_period: [String!]!,
+  $year_range_start: Float,
+  $year_range_start_type: String,
+  $year_range_end: Float,
+  $year_range_end_type: String,
+  $short_for: String,
+  $aka: [String!]!,
+  $point_validity: String,
+  $description: String
 ) { 
   createPoint( # name of resolver to use
     data: { 

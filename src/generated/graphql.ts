@@ -17,8 +17,24 @@ export type Scalars = {
 
 /** New point */
 export type CreateNewPoint = {
+  aka: Array<Scalars['String']>;
+  cultural_period: Array<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
+  glacial_period: Array<Scalars['String']>;
   name: Scalars['String'];
   name_id: Scalars['String'];
+  named_for?: InputMaybe<Scalars['String']>;
+  namers: Array<Scalars['String']>;
+  point_validity?: InputMaybe<Scalars['String']>;
+  shape: Array<Scalars['String']>;
+  short_for?: InputMaybe<Scalars['String']>;
+  size: Array<Scalars['String']>;
+  type_site?: InputMaybe<Scalars['String']>;
+  year_identified?: InputMaybe<Scalars['Float']>;
+  year_range_end?: InputMaybe<Scalars['Float']>;
+  year_range_end_type?: InputMaybe<Scalars['String']>;
+  year_range_start?: InputMaybe<Scalars['Float']>;
+  year_range_start_type?: InputMaybe<Scalars['String']>;
 };
 
 export type Mutation = {
@@ -46,6 +62,7 @@ export type Point = {
   phase: Array<Scalars['String']>;
   point_validity?: Maybe<Scalars['String']>;
   shape: Array<Scalars['String']>;
+  short_for?: Maybe<Scalars['String']>;
   size: Array<Scalars['String']>;
   tradition: Array<Scalars['String']>;
   type_site?: Maybe<Scalars['String']>;
@@ -77,10 +94,26 @@ export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?:
 export type CreatePointMutationVariables = Exact<{
   name_id: Scalars['String'];
   name: Scalars['String'];
+  shape: Array<Scalars['String']> | Scalars['String'];
+  size: Array<Scalars['String']> | Scalars['String'];
+  namers: Array<Scalars['String']> | Scalars['String'];
+  named_for?: InputMaybe<Scalars['String']>;
+  year_identified?: InputMaybe<Scalars['Float']>;
+  type_site?: InputMaybe<Scalars['String']>;
+  glacial_period: Array<Scalars['String']> | Scalars['String'];
+  cultural_period: Array<Scalars['String']> | Scalars['String'];
+  year_range_start?: InputMaybe<Scalars['Float']>;
+  year_range_start_type?: InputMaybe<Scalars['String']>;
+  year_range_end?: InputMaybe<Scalars['Float']>;
+  year_range_end_type?: InputMaybe<Scalars['String']>;
+  short_for?: InputMaybe<Scalars['String']>;
+  aka: Array<Scalars['String']> | Scalars['String'];
+  point_validity?: InputMaybe<Scalars['String']>;
+  description?: InputMaybe<Scalars['String']>;
 }>;
 
 
-export type CreatePointMutation = { __typename?: 'Mutation', createPoint?: { __typename?: 'Point', name_id: string, name: string } | null };
+export type CreatePointMutation = { __typename?: 'Mutation', createPoint?: { __typename?: 'Point', name_id: string, name: string, shape: Array<string>, size: Array<string>, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null, glacial_period: Array<string>, cultural_period: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, short_for?: string | null, aka: Array<string>, point_validity?: string | null, description?: string | null } | null };
 
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -112,10 +145,28 @@ export const GetPointByNameDocument = gql`
 }
     `;
 export const CreatePointDocument = gql`
-    mutation createPoint($name_id: String!, $name: String!) {
-  createPoint(data: {name_id: $name_id, name: $name}) {
+    mutation createPoint($name_id: String!, $name: String!, $shape: [String!]!, $size: [String!]!, $namers: [String!]!, $named_for: String, $year_identified: Float, $type_site: String, $glacial_period: [String!]!, $cultural_period: [String!]!, $year_range_start: Float, $year_range_start_type: String, $year_range_end: Float, $year_range_end_type: String, $short_for: String, $aka: [String!]!, $point_validity: String, $description: String) {
+  createPoint(
+    data: {name_id: $name_id, name: $name, shape: $shape, size: $size, namers: $namers, named_for: $named_for, year_identified: $year_identified, type_site: $type_site, glacial_period: $glacial_period, cultural_period: $cultural_period, year_range_start: $year_range_start, year_range_start_type: $year_range_start_type, year_range_end: $year_range_end, year_range_end_type: $year_range_end_type, short_for: $short_for, aka: $aka, point_validity: $point_validity, description: $description}
+  ) {
     name_id
     name
+    shape
+    size
+    namers
+    named_for
+    year_identified
+    type_site
+    glacial_period
+    cultural_period
+    year_range_start
+    year_range_start_type
+    year_range_end
+    year_range_end_type
+    short_for
+    aka
+    point_validity
+    description
   }
 }
     `;
