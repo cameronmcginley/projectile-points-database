@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 // Returns the single card with given title, desc, link
-const DetailTable = (props) => {
+const DetailTable = (props: any) => {
   // Preprocess all data into strings
   const test = () => {
     console.log("y");

@@ -10,7 +10,7 @@ import {
   Autocomplete,
 } from "@mui/material";
 
-const Dropdown = (props) => {
+const Dropdown = (props: any) => {
   const [selection, setSelection] = React.useState("");
 
   return (

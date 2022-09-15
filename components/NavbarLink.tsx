@@ -2,7 +2,7 @@ import * as React from "react";
 import { AppBar, Box, Typography, Container, Button } from "@mui/material";
 import theme from "./palette";
 
-const NavbarLink = (props) => {
+const NavbarLink = (props: any) => {
   return (
     <>
       <Button

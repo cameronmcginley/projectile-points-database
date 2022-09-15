@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 
 // Returns the single card with given title, desc, link
-const Description = (props) => {
+const Description = (props: any) => {
   return (
     <Box
       className="datapage-box"

@@ -10,7 +10,7 @@ import {
   Autocomplete,
 } from "@mui/material";
 
-const Dropdown = (props) => {
+const Dropdown = (props: any) => {
   const [selections, setSelections] = React.useState([]);
   // const [queryType, setQueryType] = React.useState("OR");
 

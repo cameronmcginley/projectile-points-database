@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "pretty": "prettier --write **/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc"
+    "pretty": "prettier --write **/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc",
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -22,6 +22,7 @@
     "apollo-server-micro": "^3.10.0",
     "class-validator": "^0.13.2",
     "clsx": "^1.2.1",
+    "gh-pages": "^4.0.0",
     "graphql": "^15.8.0",
     "graphql-request": "^4.3.0",
     "local-ssl-proxy": "^1.3.0",

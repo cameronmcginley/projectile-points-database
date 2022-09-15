@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 // Returns the single card with given title, desc, link
-const HeaderData = (props) => {
+const HeaderData = (props: any) => {
   return (
     <Box
       className="datapage-box"

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, Chip, InputAdornment } from "@mui/material";
 
-const Dropdown = (props) => {
+const Dropdown = (props: any) => {
   const [values, setValues] = React.useState([]);
   const [currValue, setCurrValue] = React.useState();
 
