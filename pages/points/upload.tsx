@@ -1,6 +1,6 @@
 import { Box, Paper } from "@mui/material";
 import type { ReactElement } from "react";
-import LayoutNavbar from "../../components/layouts/navbar";
+import LayoutNavbar from "../../components/layouts/Navbar";
 import PointUploadPanel from "../../components/PointUpload/Panel";
 import type { NextPageWithLayout } from "../_app";
 

@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import React from "react";
-import LayoutNavbar from "../../components/layouts/navbar";
+import LayoutNavbar from "../../components/layouts/Navbar";
 import type { NextPageWithLayout } from "../_app";
 
 import { dehydrate, useQuery } from "react-query";

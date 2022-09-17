@@ -51,21 +51,6 @@ p {
   border: 0.1rem solid #ccc;
 }
 
-.sidebar-accordion:hover {
-  background-color: #f1f1f1;
-}
-
-.container-cards {
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 1fr;
-}
-
-@media only screen and (max-width: 899px) {
-  .container-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 /* Datagrid overflow wrap */
 .MuiDataGrid-root .MuiDataGrid-cell{
   white-space: normal !important;

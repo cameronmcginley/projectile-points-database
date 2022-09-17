@@ -1,4 +1,4 @@
-import { ObjectType, InputType, Field, ID } from "type-graphql";
+import { Field, ID, InputType, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Point {

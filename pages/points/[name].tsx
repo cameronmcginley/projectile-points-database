@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import type { ReactElement } from "react";
-import Layout from "../../components/layouts/projectile_point";
+import Layout from "../../components/layouts/ProjectilePointData";
 import Description from "../../components/PointDataPage/Description";
 import DetailTable from "../../components/PointDataPage/DetailTable";
 import HeaderData from "../../components/PointDataPage/HeaderData";

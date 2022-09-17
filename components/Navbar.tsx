@@ -39,7 +39,6 @@ const Navbar = () => {
         <NavbarLink text="Search" link="/points" />
         <NavbarLink text="Upload" link="/points/upload" />
         <NavbarLink text="Home" link="/" />
-        <NavbarLink text="Contact" link="/contact" />
       </Box>
 
       {/* <Box className="bottom-shadow" sx={{ width: "100%", height: ".8vh", backgroundColor: theme.palette.primary.main }} /> */}

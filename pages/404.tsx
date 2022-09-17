@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import LayoutNavbar from "../components/layouts/navbar";
+import LayoutNavbar from "../components/layouts/Navbar";
 import type { NextPageWithLayout } from "./_app";
 
 const Courses: NextPageWithLayout = () => {
