@@ -5,6 +5,8 @@ import {
   Select,
   SelectChangeEvent,
   TextField,
+  Dialog,
+  CircularProgress,
 } from "@mui/material";
 import React from "react";
 import { cultural_period } from "../../constants/cultural_period";
@@ -18,6 +20,9 @@ import MultiTextField from "./MultiTextField";
 import CustomTextField from "./TextField";
 
 const Panel = () => {
+  const [dialogOpen, setDialogOpen] = React.useState(true);
+
+  // Form Fields
   const [point_name, set_point_name] = React.useState("");
   const [point_shape, set_point_shape] = React.useState([]);
   const [point_size, set_point_size] = React.useState([]);
@@ -89,8 +94,13 @@ const Panel = () => {
       console.log("Error Submitting");
       return;
     }
-    uploadNewPoint();
-    console.log("Submitted!");
+
+    setDialogOpen(true);
+    let name_id = uploadNewPoint();
+
+    setTimeout(() => {
+      window.open(`/points/${name_id}`);
+    }, 3000);
   };
 
   return (
@@ -279,6 +289,21 @@ const Panel = () => {
 
           {/* Submit button */}
           <Button onClick={handleSubmit}>Submit</Button>
+          <Dialog open={dialogOpen}>
+            <Box
+              sx={{
+                m: "5rem",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "1rem",
+              }}
+            >
+              <p>Uploading new projectile point...</p>
+              <CircularProgress />
+            </Box>
+          </Dialog>
         </Box>
       </Box>
     </>
