@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Table,
@@ -7,6 +6,7 @@ import {
   TableContainer,
   TableRow,
 } from "@mui/material";
+import React from "react";
 
 // Returns the single card with given title, desc, link
 const DetailTable = (props: any) => {

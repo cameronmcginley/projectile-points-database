@@ -1,15 +1,13 @@
-import React from "react";
-import theme from "../../components/palette";
-import type { NextPageWithLayout } from "../_app";
 import type { ReactElement } from "react";
+import React from "react";
 import LayoutNavbar from "../../components/layouts/navbar";
+import type { NextPageWithLayout } from "../_app";
 
 import { dehydrate, useQuery } from "react-query";
-import { queryClient, getPoints } from "../../src/api";
+import { getPoints, queryClient } from "../../src/api";
 
-import { AppBar, Box, Typography, Container, Grid, Paper } from "@mui/material";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import PointSearchPanel from "../../components/PointSearch/Panel";
+import { Box, Grid, Paper } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   {

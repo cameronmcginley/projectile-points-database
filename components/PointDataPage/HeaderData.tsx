@@ -1,12 +1,11 @@
-import React from "react";
 import {
   Box,
-  Typography,
-  TableContainer,
   Table,
   TableBody,
-  TableRow,
   TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
 } from "@mui/material";
 
 // Returns the single card with given title, desc, link

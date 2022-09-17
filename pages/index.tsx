@@ -1,12 +1,9 @@
-import type { NextPageWithLayout } from "./_app";
+import { Box } from "@mui/material";
 import type { ReactElement } from "react";
-import styles from "../styles/Home.module.css";
-import LayoutNavbar from "../components/layouts/navbar";
-import Card from "../components/Card";
-import ContainerCards from "../components/ContainerCards";
-import ContainerContent from "../components/ContainerContent";
 import ReactMarkdown from "react-markdown";
-import { Box, Typography } from "@mui/material";
+import ContainerContent from "../components/ContainerContent";
+import LayoutNavbar from "../components/layouts/navbar";
+import type { NextPageWithLayout } from "./_app";
 
 const Home: NextPageWithLayout = () => {
   return (

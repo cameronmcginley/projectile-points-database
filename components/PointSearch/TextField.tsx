@@ -1,14 +1,5 @@
+import { TextField } from "@mui/material";
 import React from "react";
-import {
-  Box,
-  Paper,
-  TextField,
-  Select,
-  SelectChangeEvent,
-  MenuItem,
-  InputLabel,
-  Autocomplete,
-} from "@mui/material";
 
 const Dropdown = (props: any) => {
   const [selection, setSelection] = React.useState("");

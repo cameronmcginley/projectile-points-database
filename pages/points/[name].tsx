@@ -1,27 +1,14 @@
-import type { NextPageWithLayout } from "../_app";
+import { Box } from "@mui/material";
 import type { ReactElement } from "react";
-import styles from "../../styles/Home.module.css";
 import Layout from "../../components/layouts/projectile_point";
-import { useRouter } from "next/router";
-import HeaderData from "../../components/PointDataPage/HeaderData";
 import Description from "../../components/PointDataPage/Description";
 import DetailTable from "../../components/PointDataPage/DetailTable";
-import {
-  Paper,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  Box,
-} from "@mui/material";
+import HeaderData from "../../components/PointDataPage/HeaderData";
+import type { NextPageWithLayout } from "../_app";
 
 import React from "react";
 import { dehydrate, useQuery } from "react-query";
-import { queryClient, getPointByName } from "../../src/api";
+import { getPointByName, queryClient } from "../../src/api";
 
 // Get params from URL
 export async function getServerSideProps({ params }) {
@@ -40,7 +27,7 @@ export async function getServerSideProps({ params }) {
 }
 
 const Points: NextPageWithLayout = ({ name }) => {
-  // Fetch data
+  // Fetch da
   const { data } = useQuery("point", () => getPointByName({ name }));
 
   const [headerData, setHeaderData] = React.useState([

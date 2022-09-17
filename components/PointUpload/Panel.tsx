@@ -1,27 +1,21 @@
-import React from "react";
-import theme from "../palette";
 import {
-  Paper,
-  Select,
-  MenuItem,
-  InputLabel,
-  Autocomplete,
-  Typography,
-  Button,
   Box,
+  Button,
+  MenuItem,
+  Select,
   SelectChangeEvent,
-  FormControl,
   TextField,
 } from "@mui/material";
-import Dropdown from "./Dropdown";
-import CustomTextField from "./TextField";
-import MultiTextField from "./MultiTextField";
+import React from "react";
 import { cultural_period } from "../../constants/cultural_period";
 import { glacial_period } from "../../constants/glacial_period";
 import { point_validity } from "../../constants/point_validity";
 import { shape } from "../../constants/shape";
 import { size } from "../../constants/size";
-import { queryClient, createPoint } from "../../src/api";
+import { createPoint, queryClient } from "../../src/api";
+import Dropdown from "./Dropdown";
+import MultiTextField from "./MultiTextField";
+import CustomTextField from "./TextField";
 
 const Panel = () => {
   const [point_name, set_point_name] = React.useState("");

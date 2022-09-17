@@ -1,6 +1,4 @@
-import * as React from "react";
-import { AppBar, Box, Typography, Container, Button } from "@mui/material";
-import theme from "./palette";
+import { Button } from "@mui/material";
 
 const NavbarLink = (props: any) => {
   return (

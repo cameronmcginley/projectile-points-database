@@ -1,17 +1,7 @@
+import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
-import theme from "../palette";
-import {
-  Box,
-  Paper,
-  Select,
-  MenuItem,
-  InputLabel,
-  Autocomplete,
-  Typography,
-} from "@mui/material";
 import { countries } from "../../constants/countries";
-import { shapes } from "../../constants/shape";
-import StatesMap from "../StatesMap";
+import theme from "../palette";
 import Dropdown from "./Dropdown";
 import TextField from "./TextField";
 

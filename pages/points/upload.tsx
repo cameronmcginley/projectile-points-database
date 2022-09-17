@@ -1,10 +1,8 @@
-import React from "react";
-import type { NextPageWithLayout } from "../_app";
+import { Box, Paper } from "@mui/material";
 import type { ReactElement } from "react";
 import LayoutNavbar from "../../components/layouts/navbar";
-import { AppBar, Box, Typography, Container, Grid, Paper } from "@mui/material";
-import ContainerContent from "../../components/ContainerContent";
 import PointUploadPanel from "../../components/PointUpload/Panel";
+import type { NextPageWithLayout } from "../_app";
 
 const Upload: NextPageWithLayout = () => {
   return (

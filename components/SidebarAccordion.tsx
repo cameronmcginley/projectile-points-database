@@ -1,10 +1,10 @@
-import React from "react";
-import { Button, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import ArrowForwardIosSharpIcon from "@mui/icons-material/ArrowForwardIosSharp";
+import { Box, Button } from "@mui/material";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
+import { styled } from "@mui/material/styles";
 import { useRouter } from "next/router";
+import React from "react";
 import theme from "./palette";
 
 const Accordion = styled((props: AccordionProps) => (

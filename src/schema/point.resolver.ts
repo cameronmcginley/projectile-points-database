@@ -1,5 +1,5 @@
-import { Resolver, Mutation, Query, Arg, Int, Ctx } from "type-graphql";
-import { Point, CreateNewPoint } from "./point";
+import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { CreateNewPoint, Point } from "./point";
 
 // Use prisma for db connection
 import { PrismaClient } from "@prisma/client";

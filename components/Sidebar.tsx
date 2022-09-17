@@ -1,7 +1,7 @@
-import React from "react";
 import { Paper } from "@mui/material";
-import SidebarAccordion from "./SidebarAccordion";
 import { useRouter } from "next/router";
+import React from "react";
+import SidebarAccordion from "./SidebarAccordion";
 
 const Sidebar = () => {
   const router = useRouter();
