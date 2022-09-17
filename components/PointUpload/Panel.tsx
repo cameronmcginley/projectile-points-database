@@ -20,7 +20,7 @@ import MultiTextField from "./MultiTextField";
 import CustomTextField from "./TextField";
 
 const Panel = () => {
-  const [dialogOpen, setDialogOpen] = React.useState(true);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   // Form Fields
   const [point_name, set_point_name] = React.useState("");
