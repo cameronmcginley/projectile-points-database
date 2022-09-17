@@ -65,7 +65,7 @@ const DetailTable = (props: any) => {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
-                        <TableCell>{item[0]}</TableCell>
+                        <TableCell sx={{ width: "10rem" }}>{item[0]}</TableCell>
                         <TableCell>{item[1]}</TableCell>
                       </TableRow>
                     );

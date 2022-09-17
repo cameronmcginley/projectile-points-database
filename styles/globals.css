@@ -71,3 +71,13 @@ p {
   white-space: normal !important;
   word-wrap: normal !important;
   }
+  
+@media only screen and (max-width: 899px) {
+  .point-data-grid {
+    flex-direction: column-reverse;
+  }
+
+  .point-data-detail-table {
+    width: 100%;
+  }
+}

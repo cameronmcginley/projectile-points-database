@@ -16,6 +16,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  Box,
 } from "@mui/material";
 
 import React from "react";
@@ -41,8 +42,6 @@ export async function getServerSideProps({ params }) {
 const Points: NextPageWithLayout = ({ name }) => {
   // Fetch data
   const { data } = useQuery("point", () => getPointByName({ name }));
-  console.log(data);
-  console.log("test");
 
   const [headerData, setHeaderData] = React.useState([
     ["Variant", data.point.variant],
@@ -77,91 +76,42 @@ const Points: NextPageWithLayout = ({ name }) => {
 
   return (
     <>
-      {/* <div>{JSON.stringify(data)}</div> */}
-      {/* <div>{JSON.stringify(data)}</div> */}
-      {/* <Paper square sx={{ minHeight: "70vh", p: 4 }}>
-        <p>test</p>
-      </Paper> */}
       {data && data.point && (
         <>
           {/* Header */}
           <HeaderData headerData={headerData} name={data.point.name} />
 
           {/* Main grid */}
-          <Grid container columnSpacing={2}>
-            {/* Col 1, Description */}
-            <Grid xs item style={{ minWidth: "16rem" }}>
+          {/* <Grid container columnSpacing={2} className="point-data-grid">
+                      <Grid xs item style={{ minWidth: "16rem" }}>
               <Description description={data.point.description} />
             </Grid>
 
-            {/* Col 2, Projectile point details */}
-            <Grid item style={{ minWidth: "24rem" }}>
+            <Grid item style={{ maxWidth: "24rem" }}>
               <DetailTable data={pointDetails} />
               <DetailTable data={nameDetails} />
-              {/* <Paper>
-                <TableContainer sx={{ p: 1 }}>
-                  <Table size="small" aria-label="simple table">
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>{"Date"}</TableCell>
-                        <TableCell>{data.point.date_info}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>{"Cultural Period"}</TableCell>
-                        <TableCell>{data.point.cultural_period}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>{"Glacial Period"}</TableCell>
-                        <TableCell>{data.point.glacial_period}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>{"Culture"}</TableCell>
-                        <TableCell>{data.point.culture}</TableCell>
-                      </TableRow>
-                      <TableRow
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell>{"Tradition"}</TableCell>
-                        <TableCell>{data.point.tradition}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper> */}
-
-              {/* Name details */}
-              {/* <Paper sx={{ mt: 2 }}>
-                <TableContainer sx={{ p: 1 }}>
-                  <Table size="small" aria-label="simple table">
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>{"Named By"}</TableCell>
-                        <TableCell>{data.point.date_info}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>{"Named For"}</TableCell>
-                        <TableCell>{data.point.cultural_period}</TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>{"Year Identified"}</TableCell>
-                        <TableCell>{data.point.glacial_period}</TableCell>
-                      </TableRow>
-                      <TableRow
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell>{"Type Site"}</TableCell>
-                        <TableCell>{data.point.tradition}</TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              </Paper> */}
             </Grid>
-          </Grid>
+          </Grid> */}
+
+          <Box
+            className="point-data-grid"
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "1rem",
+              mb: "5rem",
+            }}
+          >
+            {/* Col 1, Description */}
+            <Box sx={{ minWidth: "16rem" }}>
+              <Description description={data.point.description} />
+            </Box>
+            {/* Col 2, Projectile point details */}
+            <Box className="point-data-detail-table" sx={{ minWidth: "24rem" }}>
+              <DetailTable data={pointDetails} />
+              <DetailTable data={nameDetails} />
+            </Box>
+          </Box>
         </>
       )}
     </>

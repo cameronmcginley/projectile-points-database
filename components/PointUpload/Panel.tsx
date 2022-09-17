@@ -57,7 +57,7 @@ const Panel = () => {
     // Generate Name ID from input name
     // Remove non alphanumeric, set to lowercase, replace space with _
     let point_name_id = point_name.replace(" ", "_");
-    point_name_id = point_name_id.replace(/[^a-z0-9]/gi, "");
+    point_name_id = point_name_id.replace(/[^a-z0-9_]/gi, "");
     point_name_id = point_name_id.toLowerCase();
 
     // Send data
