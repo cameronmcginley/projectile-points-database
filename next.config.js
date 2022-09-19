@@ -8,6 +8,10 @@ const nextConfig = {
       config.experiments = {};
     }
     config.experiments.topLevelAwait = true;
+    config.module.rules.push({
+      test: /\.md$/,
+      use: "raw-loader",
+    });
     return config;
   },
 };

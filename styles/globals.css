@@ -19,8 +19,8 @@ body {
 
 p {
   color: #444444;
-  padding: 0;
-  margin: 0;
+  /* padding: 0; */
+  /* margin: 0; */
 }
 
 .text-title {
