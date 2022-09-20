@@ -28,7 +28,7 @@ export class PointResolver {
   }
 
   // Delete point by name_id
-  @Mutation(() => String)
+  @Mutation(() => Boolean)
   async deletePoint(@Arg("name_id", () => String!) name_id: string) {
     // async deletePost(@Arg("name_id") name_id: string, @Ctx() ctx) {
     await prisma.projectile_point.delete({
@@ -36,7 +36,7 @@ export class PointResolver {
         name_id: name_id,
       },
     });
-    return "hi";
+    return true;
   }
 
   // Create new point

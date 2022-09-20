@@ -20,15 +20,15 @@ export async function getServerSideProps({ params }) {
   // Return dehydrated state
   return {
     props: {
-      name: params.name,
+      name_id: params.name,
       dehydratedState: dehydrate(queryClient),
     },
   };
 }
 
-const Points: NextPageWithLayout = ({ name }) => {
-  // Fetch da
-  const { data } = useQuery("point", () => getPointByName({ name }));
+const Points: NextPageWithLayout = ({ name_id }) => {
+  // Fetch data
+  const { data } = useQuery("point", () => getPointByName({ name_id }));
 
   const [headerData, setHeaderData] = React.useState([
     ["Variant", data.point.variant],
@@ -66,7 +66,11 @@ const Points: NextPageWithLayout = ({ name }) => {
       {data && data.point && (
         <>
           {/* Header */}
-          <HeaderData headerData={headerData} name={data.point.name} />
+          <HeaderData
+            headerData={headerData}
+            name={data.point.name}
+            name_id={name_id}
+          />
 
           {/* Main grid */}
           <Box

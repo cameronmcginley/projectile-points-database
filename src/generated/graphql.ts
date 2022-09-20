@@ -40,11 +40,17 @@ export type CreateNewPoint = {
 export type Mutation = {
   __typename?: 'Mutation';
   createPoint?: Maybe<Point>;
+  deletePoint: Scalars['String'];
 };
 
 
 export type MutationCreatePointArgs = {
   data: CreateNewPoint;
+};
+
+
+export type MutationDeletePointArgs = {
+  name_id: Scalars['String'];
 };
 
 export type Point = {
@@ -115,6 +121,13 @@ export type CreatePointMutationVariables = Exact<{
 
 export type CreatePointMutation = { __typename?: 'Mutation', createPoint?: { __typename?: 'Point', name_id: string, name: string, shape: Array<string>, size: Array<string>, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null, glacial_period: Array<string>, cultural_period: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, short_for?: string | null, aka: Array<string>, point_validity?: string | null, description?: string | null } | null };
 
+export type DeletePointMutationVariables = Exact<{
+  name_id: Scalars['String'];
+}>;
+
+
+export type DeletePointMutation = { __typename?: 'Mutation', deletePoint: string };
+
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -170,6 +183,11 @@ export const CreatePointDocument = gql`
   }
 }
     `;
+export const DeletePointDocument = gql`
+    mutation deletePoint($name_id: String!) {
+  deletePoint(name_id: $name_id)
+}
+    `;
 export const GetPointsDocument = gql`
     query getPoints {
   points {
@@ -195,6 +213,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     createPoint(variables: CreatePointMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreatePointMutation> {
       return withWrapper((wrappedRequestHeaders) => client.request<CreatePointMutation>(CreatePointDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'createPoint', 'mutation');
+    },
+    deletePoint(variables: DeletePointMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<DeletePointMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<DeletePointMutation>(DeletePointDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'deletePoint', 'mutation');
     },
     getPoints(variables?: GetPointsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetPointsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<GetPointsQuery>(GetPointsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getPoints', 'query');

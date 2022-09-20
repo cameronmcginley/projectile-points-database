@@ -13,10 +13,21 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { deletePoint, queryClient } from "../../src/api";
+import { useRouter } from "next/router";
 
 // Returns the single card with given title, desc, link
 const HeaderData = (props: any) => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
+
+  const handleDelete = async () => {
+    // Send data
+    // console.log(props.name_id);
+    window.open(`/points/`);
+    await queryClient.fetchQuery("deletePoint", () =>
+      deletePoint(props.name_id)
+    );
+  };
 
   return (
     <Box
@@ -87,6 +98,7 @@ const HeaderData = (props: any) => {
         </Table>
       </TableContainer>
 
+      {/* Delete point dialog popup */}
       <Dialog
         open={dialogOpen}
         onClose={() => {
@@ -108,7 +120,7 @@ const HeaderData = (props: any) => {
             <Button
               variant="outlined"
               onClick={() => {
-                setDialogOpen(false);
+                handleDelete();
               }}
             >
               Yes

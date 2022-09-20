@@ -1,13 +1,3 @@
-# mutation deletePoint($name_id: String!) {
-#   deletePoint(name_id: $name_id)
-# }
-
-mutation deletePoint( # Name of gql query
-  $name_id: String!
-) { 
-  deletePoint( # name of resolver to use
-    name_id: $name_id
-  ) {
-    name_id
-  }
+mutation deletePoint($name_id: String!) {
+  deletePoint(name_id: $name_id)
 }
