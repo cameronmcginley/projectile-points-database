@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Table,
@@ -6,10 +7,17 @@ import {
   TableContainer,
   TableRow,
   Typography,
+  Grid,
+  Dialog,
+  Button,
 } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 // Returns the single card with given title, desc, link
 const HeaderData = (props: any) => {
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
   return (
     <Box
       className="datapage-box"
@@ -22,7 +30,22 @@ const HeaderData = (props: any) => {
       }}
     >
       {/* Title */}
-      <Typography variant="h3">{props.name}</Typography>
+      <Grid container spacing={3}>
+        <Grid item xs></Grid>
+        <Grid item xs={10} sx={{ display: "flex", justifyContent: "center" }}>
+          <Typography variant="h3">{props.name}</Typography>
+        </Grid>
+        <Grid item xs sx={{ display: "flex", justifyContent: "center" }}>
+          <IconButton
+            aria-label="delete"
+            onClick={() => {
+              setDialogOpen(true);
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Grid>
+      </Grid>
 
       {/* Header data */}
       <TableContainer sx={{ p: 1, width: "auto" }}>
@@ -63,6 +86,44 @@ const HeaderData = (props: any) => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Dialog
+        open={dialogOpen}
+        onClose={() => {
+          setDialogOpen(false);
+        }}
+      >
+        <Box
+          sx={{
+            m: "5rem",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
+          <p>Delete this projectile point permanently?</p>
+          <Box sx={{ display: "flex", gap: "3rem" }}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setDialogOpen(false);
+              }}
+            >
+              Yes
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                setDialogOpen(false);
+              }}
+            >
+              No
+            </Button>
+          </Box>
+        </Box>
+      </Dialog>
     </Box>
   );
 };
