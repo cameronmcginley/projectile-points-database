@@ -69,17 +69,6 @@ const Points: NextPageWithLayout = ({ name }) => {
           <HeaderData headerData={headerData} name={data.point.name} />
 
           {/* Main grid */}
-          {/* <Grid container columnSpacing={2} className="point-data-grid">
-                      <Grid xs item style={{ minWidth: "16rem" }}>
-              <Description description={data.point.description} />
-            </Grid>
-
-            <Grid item style={{ maxWidth: "24rem" }}>
-              <DetailTable data={pointDetails} />
-              <DetailTable data={nameDetails} />
-            </Grid>
-          </Grid> */}
-
           <Box
             className="point-data-grid"
             sx={{

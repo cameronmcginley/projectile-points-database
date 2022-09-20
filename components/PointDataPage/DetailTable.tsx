@@ -35,12 +35,6 @@ const DetailTable = (props: any) => {
 
       setData(dataCopy);
     }
-
-    if (data[0][0] === "Named By" && typeof data[0][1] === "object") {
-      let dataCopy = [...data];
-      dataCopy[0][1] = dataCopy[0][1].join(", ");
-      setData(dataCopy);
-    }
   }, []);
 
   return (
@@ -56,8 +50,15 @@ const DetailTable = (props: any) => {
           <TableContainer sx={{ p: 1 }}>
             <Table size="small" aria-label="simple table">
               <TableBody>
-                {props.data.map((item) => {
-                  if (item[1])
+                {/* Only map if value is not "" or 0 (0 for both date ranges) */}
+                {props.data.map((item: any) => {
+                  if (
+                    item[1] !== "" &&
+                    item[1] !== null &&
+                    item[1] !== undefined &&
+                    item[1].length > 0
+                  ) {
+                    console.log(item);
                     return (
                       <TableRow
                         key={item[0]}
@@ -65,10 +66,17 @@ const DetailTable = (props: any) => {
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
                       >
+                        {/* Display key */}
                         <TableCell sx={{ width: "10rem" }}>{item[0]}</TableCell>
-                        <TableCell>{item[1]}</TableCell>
+                        {/* Display the value, seperate if it's an array */}
+                        {Array.isArray(item[1]) ? (
+                          <TableCell>{item[1].join(", ")}</TableCell>
+                        ) : (
+                          <TableCell>{item[1]}</TableCell>
+                        )}
                       </TableRow>
                     );
+                  }
                 })}
               </TableBody>
             </Table>
