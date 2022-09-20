@@ -8,7 +8,8 @@ const gqlClient = new GraphQLClient(
 );
 
 // Queries from generated graphql
-export const { getPoints, getPointByName, createPoint } = getSdk(gqlClient);
+export const { getPoints, getPointByName, createPoint, deletePoint } =
+  getSdk(gqlClient);
 
 // Shared between server and client
 export const queryClient = new QueryClient({

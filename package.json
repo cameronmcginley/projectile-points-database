@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "ssl": "local-ssl-proxy --source 3001 --target 3000 --cert localhost.pem --key localhost-key.pem",
-    "generate": "graphql-codegen",
+    "generate": "graphql-codegen --debug --verbose",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -42,8 +42,8 @@
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.8.1",
-    "@graphql-codegen/typescript": "^2.7.1",
+    "@graphql-codegen/cli": "^2.12.0",
+    "@graphql-codegen/typescript": "^2.7.3",
     "@graphql-codegen/typescript-graphql-request": "^4.5.1",
     "@graphql-codegen/typescript-operations": "^2.5.1",
     "@graphql-codegen/typescript-react-query": "^3.6.1",

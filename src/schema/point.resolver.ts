@@ -1,4 +1,4 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Ctx, Arg, Mutation, Query, Resolver } from "type-graphql";
 import { CreateNewPoint, Point } from "./point";
 
 // Use prisma for db connection
@@ -25,6 +25,18 @@ export class PointResolver {
   @Query(() => [Point])
   async points() {
     return prisma.projectile_point.findMany();
+  }
+
+  // Delete point by name_id
+  @Mutation(() => String)
+  async deletePoint(@Arg("name_id", () => String!) name_id: string) {
+    // async deletePost(@Arg("name_id") name_id: string, @Ctx() ctx) {
+    await prisma.projectile_point.delete({
+      where: {
+        name_id: name_id,
+      },
+    });
+    return "hi";
   }
 
   // Create new point
