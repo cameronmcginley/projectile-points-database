@@ -19,11 +19,14 @@ import { useRouter } from "next/router";
 // Returns the single card with given title, desc, link
 const HeaderData = (props: any) => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     // Send data
     console.log("Deleting " + props.name_id);
-    window.open(`/points/`);
+
+    router.push("/points");
+
     await queryClient.fetchQuery("deletePoint", () =>
       deletePoint({ name_id: props.name_id })
     );

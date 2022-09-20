@@ -18,9 +18,11 @@ import { createPoint, queryClient } from "../../src/api";
 import Dropdown from "./Dropdown";
 import MultiTextField from "./MultiTextField";
 import CustomTextField from "./TextField";
+import { useRouter } from "next/router";
 
 const Panel = () => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const router = useRouter();
 
   // Form Fields
   const [point_name, set_point_name] = React.useState("");
@@ -99,7 +101,7 @@ const Panel = () => {
     let name_id = uploadNewPoint();
 
     setTimeout(() => {
-      window.open(`/points/${name_id}`);
+      router.push(`/points/${name_id}`);
     }, 3000);
   };
 
