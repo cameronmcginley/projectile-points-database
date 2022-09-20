@@ -22,10 +22,10 @@ const HeaderData = (props: any) => {
 
   const handleDelete = async () => {
     // Send data
-    // console.log(props.name_id);
+    console.log("Deleting " + props.name_id);
     window.open(`/points/`);
     await queryClient.fetchQuery("deletePoint", () =>
-      deletePoint(props.name_id)
+      deletePoint({ name_id: props.name_id })
     );
   };
 
