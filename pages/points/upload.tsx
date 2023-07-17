@@ -23,7 +23,7 @@ const Upload: NextPageWithLayout = () => {
           }}
         >
           <p className="text-title">Create New Projectile Point</p>
-          <PointUploadPanel />
+          <PointUploadPanel is_edit={false} name_id={null} />
         </Paper>
       </Box>
     </>
