@@ -67,6 +67,12 @@ export class Point {
 
   @Field({ nullable: true })
   short_for: string;
+
+  @Field({ nullable: true })
+  cluster: string;
+
+  @Field({ nullable: true })
+  variant: string;
 }
 
 @InputType({ description: "New point" })
