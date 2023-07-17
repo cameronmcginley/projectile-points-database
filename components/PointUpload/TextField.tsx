@@ -19,6 +19,7 @@ const Dropdown = (props: any) => {
         multiline={props.multiline}
         rows={4}
         value={props.value}
+        disabled={props.disabled}
       />
     </>
   );
