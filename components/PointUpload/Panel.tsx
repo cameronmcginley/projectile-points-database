@@ -8,19 +8,20 @@ import {
   Dialog,
   CircularProgress,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { cultural_period } from "../../constants/cultural_period";
 import { glacial_period } from "../../constants/glacial_period";
 import { point_validity } from "../../constants/point_validity";
 import { shape } from "../../constants/shape";
 import { size } from "../../constants/size";
-import { createPoint, queryClient } from "../../src/api";
+import { createPoint, getPointByName, queryClient } from "../../src/api";
 import Dropdown from "./Dropdown";
 import MultiTextField from "./MultiTextField";
 import CustomTextField from "./TextField";
 import { useRouter } from "next/router";
+import { dehydrate, useQuery } from "react-query";
 
-const Panel = () => {
+const Panel = ({ is_edit, point_data }) => {
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const router = useRouter();
 
@@ -53,6 +54,34 @@ const Panel = () => {
   const [point_point_validity, set_point_point_validity] = React.useState("");
   const [point_description, set_point_description] = React.useState("");
   // const [point_similar_point, set_point_similar_point] = React.useState([]);
+
+  const getPointData = async () => {
+    set_point_name(point_data.name);
+    set_point_shape(point_data.shape);
+    set_point_size(point_data.size);
+    set_point_namers(point_data.namers);
+    set_point_named_for(point_data.named_for);
+    set_point_year_identified(point_data.year_identified);
+    set_point_type_site(point_data.type_site);
+    set_point_glacial_period(point_data.glacial_period);
+    // set_point_canadian_period(point_data.canadian_period);
+    set_point_cultural_period(point_data.cultural_period);
+    // set_point_culture(point_data.culture);
+    // set_point_environment(point_data.environment);
+    // set_point_phase(point_data.phase);
+    // set_point_tradition(point_data.tradition);
+    set_point_year_range_start(point_data.year_range_start);
+    set_point_year_range_start_type(point_data.year_range_start_type);
+    set_point_year_range_end(point_data.year_range_end);
+    set_point_year_range_end_type(point_data.year_range_end_type);
+    set_point_variant(point_data.variant);
+    set_point_short_for(point_data.short_for);
+    set_point_aka(point_data.aka);
+    // set_point_cluster(point_data.cluster);
+    set_point_point_validity(point_data.point_validity);
+    set_point_description(point_data.description);
+    // set_point_similar_point(point_data.similar_point);
+  };
 
   const uploadNewPoint = async () => {
     // Generate Name ID from input name
@@ -105,6 +134,13 @@ const Panel = () => {
     }, 3000);
   };
 
+  useEffect(() => {
+    console.log("Useeffect");
+    if (is_edit && point_data) {
+      getPointData();
+    }
+  }, [point_data]);
+
   return (
     <>
       <Box
@@ -130,6 +166,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_name(e.target.value);
             }}
+            value={point_name}
           />
 
           <Dropdown
@@ -138,14 +175,17 @@ const Panel = () => {
               set_point_shape(new_val);
             }}
             options={shape}
+            value={point_shape}
           />
 
           <Dropdown
             label={"Size"}
             onChange={(e, new_val) => {
               set_point_size(new_val);
+              console.log(point_size);
             }}
             options={size}
+            value={point_size}
           />
 
           <MultiTextField
@@ -153,6 +193,7 @@ const Panel = () => {
             returnValues={(values) => {
               set_point_namers(values);
             }}
+            values={point_namers}
           />
 
           <CustomTextField
@@ -160,6 +201,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_named_for(e.target.value);
             }}
+            value={point_named_for}
           />
 
           <CustomTextField
@@ -167,6 +209,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_year_identified(e.target.value);
             }}
+            value={point_year_identified}
           />
 
           <CustomTextField
@@ -174,6 +217,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_type_site(e.target.value);
             }}
+            value={point_type_site}
           />
 
           <Dropdown
@@ -182,6 +226,7 @@ const Panel = () => {
               set_point_glacial_period(new_val);
             }}
             options={glacial_period}
+            value={point_glacial_period}
           />
 
           <Dropdown
@@ -190,6 +235,7 @@ const Panel = () => {
               set_point_cultural_period(new_val);
             }}
             options={cultural_period}
+            value={point_cultural_period}
           />
 
           {/* Column Two */}
@@ -209,6 +255,7 @@ const Panel = () => {
               onChange={(e) => {
                 set_point_year_range_start(e.target.value);
               }}
+              value={point_year_range_start}
             />
 
             <Select
@@ -229,6 +276,7 @@ const Panel = () => {
               onChange={(e) => {
                 set_point_year_range_end(e.target.value);
               }}
+              value={point_year_range_end}
             />
 
             <Select
@@ -247,6 +295,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_variant(e.target.value);
             }}
+            value={point_variant}
           />
 
           <CustomTextField
@@ -254,6 +303,7 @@ const Panel = () => {
             onChange={(e) => {
               set_point_short_for(e.target.value);
             }}
+            value={point_short_for}
           />
 
           <MultiTextField
@@ -261,6 +311,7 @@ const Panel = () => {
             returnValues={(values) => {
               set_point_aka(values);
             }}
+            values={point_aka}
           />
 
           <TextField
@@ -287,6 +338,7 @@ const Panel = () => {
               set_point_description(e.target.value);
             }}
             multiline={true}
+            value={point_description}
           />
 
           {/* Submit button */}

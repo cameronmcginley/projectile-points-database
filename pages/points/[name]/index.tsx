@@ -1,14 +1,14 @@
 import { Box } from "@mui/material";
 import type { ReactElement } from "react";
-import Layout from "../../components/layouts/ProjectilePointData";
-import Description from "../../components/PointDataPage/Description";
-import DetailTable from "../../components/PointDataPage/DetailTable";
-import HeaderData from "../../components/PointDataPage/HeaderData";
-import type { NextPageWithLayout } from "../_app";
+import Layout from "../../../components/layouts/ProjectilePointData";
+import Description from "../../../components/PointDataPage/Description";
+import DetailTable from "../../../components/PointDataPage/DetailTable";
+import HeaderData from "../../../components/PointDataPage/HeaderData";
+import type { NextPageWithLayout } from "../../_app";
 
 import React from "react";
 import { dehydrate, useQuery } from "react-query";
-import { getPointByName, queryClient } from "../../src/api";
+import { getPointByName, queryClient } from "../../../src/api";
 
 // Get params from URL
 export async function getServerSideProps({ params }) {

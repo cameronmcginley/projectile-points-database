@@ -32,6 +32,11 @@ const HeaderData = (props: any) => {
     );
   };
 
+  const handleEdit = async () => {
+    console.log("Editing " + props.name_id);
+    router.push("/points/" + props.name_id + "/edit");
+  };
+
   return (
     <Box
       className="datapage-box"
@@ -50,6 +55,16 @@ const HeaderData = (props: any) => {
           <Typography variant="h3">{props.name}</Typography>
         </Grid>
         <Grid item xs sx={{ display: "flex", justifyContent: "center" }}>
+          {/* Edit Button */}
+          <Button
+            variant="text"
+            onClick={() => {
+              handleEdit();
+            }}
+          >
+            Edit
+          </Button>
+          {/* Delete Button */}
           <IconButton
             aria-label="delete"
             onClick={() => {

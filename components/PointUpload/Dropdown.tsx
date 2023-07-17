@@ -1,20 +1,22 @@
 import { Autocomplete, TextField } from "@mui/material";
+import React from "react";
 
 const Dropdown = (props: any) => {
-  // const [selections, setSelections] = React.useState([]);
+  const [selections, setSelections] = React.useState(props.value);
+
+  // Read in props.values to values
+  React.useEffect(() => {
+    setSelections(props.value);
+  }, [props.value]);
 
   return (
     <>
-      {/* <p>{JSON.stringify(selections)}</p> */}
       <Autocomplete
         multiple
         disableCloseOnSelect
         options={props.options}
-        // getOptionLabel={(option) => option.state_name}
-        // groupBy={(option) => option.country_name}
-        // onChange={(e, new_val) => {
-        //   setSelections(new_val);
-        // }}
+        // Weird error on render with empty selections, default it to empty array
+        value={selections ? selections : []}
         renderInput={(params) => (
           <TextField
             {...params}

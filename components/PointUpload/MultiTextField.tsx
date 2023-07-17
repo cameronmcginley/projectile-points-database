@@ -26,6 +26,11 @@ const Dropdown = (props: any) => {
     props.returnValues(arr); //Copy back to parent
   };
 
+  // Read in props.values to values
+  React.useEffect(() => {
+    setValues(props.values);
+  }, [props.values]);
+
   return (
     <>
       <TextField

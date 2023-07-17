@@ -1,0 +1,6 @@
+Problem with npm run dev / next dev:
+    Delete .next
+
+After updating any graphql:
+    npm run generate
+
