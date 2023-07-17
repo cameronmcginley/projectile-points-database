@@ -3,4 +3,7 @@ Problem with npm run dev / next dev:
 
 After updating any graphql:
     npm run generate
+    Right now the endpoint is set to be the published website, so making changes
+    to api locally (ie resolver) will not be reflected when codegen tries
+    to hit the api.
 
