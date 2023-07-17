@@ -43,9 +43,9 @@ export class PointResolver {
   // @Mutation((data) => Point, { nullable: true })
   // async updatePoint(@Arg("data") newPointData: CreateNewPoint): Point {
   @Mutation((data) => Point, { nullable: true })
-  async updatePoint(@Arg("data") updated_data: any): any {
+  async updatePoint(@Arg("data") updated_data: CreateNewPoint): Point {
     // https://www.prisma.io/docs/concepts/components/prisma-client/crud
-    await prisma.projectile_point.update({
+    const point = await prisma.projectile_point.update({
       where: {
         name_id: updated_data.name_id,
       },
@@ -69,7 +69,7 @@ export class PointResolver {
         description: updated_data.description,
       },
     });
-    // return point;
+    return point;
   }
 
   // Create new point
