@@ -1,0 +1,62 @@
+mutation updatePoint( # Name of gql query
+  $name_id: String!, 
+  $name: String!,
+  $shape: [String!]!,
+  $size: [String!]!,
+  $namers: [String!]!,
+  $named_for: String,
+  $year_identified: Float,
+  $type_site: String,
+  $glacial_period: [String!]!,
+  $cultural_period: [String!]!,
+  $year_range_start: Float,
+  $year_range_start_type: String,
+  $year_range_end: Float,
+  $year_range_end_type: String,
+  $short_for: String,
+  $aka: [String!]!,
+  $point_validity: String,
+  $description: String
+) { 
+  updatePoint( # name of resolver to use
+    data: { 
+      name_id: $name_id, 
+      name: $name 
+      shape: $shape,
+      size: $size,
+      namers: $namers,
+      named_for: $named_for,
+      year_identified: $year_identified,
+      type_site: $type_site,
+      glacial_period: $glacial_period,
+      cultural_period: $cultural_period,
+      year_range_start: $year_range_start,
+      year_range_start_type: $year_range_start_type,
+      year_range_end: $year_range_end,
+      year_range_end_type: $year_range_end_type,
+      short_for: $short_for,
+      aka: $aka,
+      point_validity: $point_validity,
+      description: $description,
+      }
+  ) {
+    name_id
+    name
+    shape
+    size
+    namers
+    named_for
+    year_identified
+    type_site
+    glacial_period
+    cultural_period
+    year_range_start
+    year_range_start_type
+    year_range_end
+    year_range_end_type
+    short_for
+    aka
+    point_validity
+    description
+  }
+}
