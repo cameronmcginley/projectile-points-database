@@ -18,6 +18,7 @@ const Dropdown = (props: any) => {
         required={props.required}
         multiline={props.multiline}
         rows={4}
+        value={props.value}
       />
     </>
   );
