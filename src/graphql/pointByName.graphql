@@ -17,5 +17,10 @@ query getPointByName($name: String!) {
     named_for
     year_identified
     type_site
+    shape
+    size
+    variant
+    point_validity
+    cluster
   }
 }

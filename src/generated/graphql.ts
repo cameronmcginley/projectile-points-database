@@ -62,6 +62,7 @@ export type MutationUpdatePointArgs = {
 export type Point = {
   __typename?: 'Point';
   aka: Array<Scalars['String']>;
+  cluster?: Maybe<Scalars['String']>;
   cultural_period: Array<Scalars['String']>;
   culture: Array<Scalars['String']>;
   date_info?: Maybe<Scalars['String']>;
@@ -78,6 +79,7 @@ export type Point = {
   size: Array<Scalars['String']>;
   tradition: Array<Scalars['String']>;
   type_site?: Maybe<Scalars['String']>;
+  variant?: Maybe<Scalars['String']>;
   year_identified?: Maybe<Scalars['Float']>;
   year_range_end?: Maybe<Scalars['Float']>;
   year_range_end_type?: Maybe<Scalars['String']>;
@@ -101,7 +103,7 @@ export type GetPointByNameQueryVariables = Exact<{
 }>;
 
 
-export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture: Array<string>, tradition: Array<string>, phase: Array<string>, glacial_period: Array<string>, cultural_period: Array<string>, description?: string | null, aka: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null } | null };
+export type GetPointByNameQuery = { __typename?: 'Query', point?: { __typename?: 'Point', name: string, date_info?: string | null, culture: Array<string>, tradition: Array<string>, phase: Array<string>, glacial_period: Array<string>, cultural_period: Array<string>, description?: string | null, aka: Array<string>, year_range_start?: number | null, year_range_start_type?: string | null, year_range_end?: number | null, year_range_end_type?: string | null, namers: Array<string>, named_for?: string | null, year_identified?: number | null, type_site?: string | null, shape: Array<string>, size: Array<string>, variant?: string | null, point_validity?: string | null, cluster?: string | null } | null };
 
 export type CreatePointMutationVariables = Exact<{
   name_id: Scalars['String'];
@@ -184,6 +186,11 @@ export const GetPointByNameDocument = gql`
     named_for
     year_identified
     type_site
+    shape
+    size
+    variant
+    point_validity
+    cluster
   }
 }
     `;
