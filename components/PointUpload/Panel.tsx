@@ -14,7 +14,12 @@ import { glacial_period } from "../../constants/glacial_period";
 import { point_validity } from "../../constants/point_validity";
 import { shape } from "../../constants/shape";
 import { size } from "../../constants/size";
-import { createPoint, getPointByName, queryClient } from "../../src/api";
+import {
+  createPoint,
+  updatePoint,
+  getPointByName,
+  queryClient,
+} from "../../src/api";
 import Dropdown from "./Dropdown";
 import MultiTextField from "./MultiTextField";
 import CustomTextField from "./TextField";
@@ -115,6 +120,36 @@ const Panel = ({ is_edit, point_data }) => {
     );
   };
 
+  const handleUpdatePoint = async () => {
+    let point_name_id = point_name.replaceAll(" ", "_");
+    point_name_id = point_name_id.replace(/[^a-z0-9_]/gi, "");
+    point_name_id = point_name_id.toLowerCase();
+
+    // Send data
+    await queryClient.fetchQuery("updatePoint", () =>
+      updatePoint({
+        name_id: point_name_id,
+        name: point_name,
+        shape: point_shape,
+        size: point_size,
+        namers: point_namers,
+        named_for: point_named_for,
+        year_identified: Number(point_year_identified),
+        type_site: point_type_site,
+        glacial_period: point_glacial_period,
+        cultural_period: point_cultural_period,
+        year_range_start: Number(point_year_range_start),
+        year_range_start_type: point_year_range_start_type,
+        year_range_end: Number(point_year_range_end),
+        year_range_end_type: point_year_range_end_type,
+        short_for: point_short_for,
+        aka: point_aka,
+        point_validity: point_point_validity,
+        description: point_description,
+      })
+    );
+  };
+
   const checkValidSubmission = () => {
     return point_name != "";
   };
@@ -127,7 +162,14 @@ const Panel = ({ is_edit, point_data }) => {
     }
 
     setDialogOpen(true);
-    let name_id = uploadNewPoint();
+
+    let name_id;
+
+    if (is_edit) {
+      name_id = handleUpdatePoint();
+    } else {
+      name_id = uploadNewPoint();
+    }
 
     setTimeout(() => {
       router.push(`/points/${name_id}`);
@@ -167,6 +209,7 @@ const Panel = ({ is_edit, point_data }) => {
               set_point_name(e.target.value);
             }}
             value={point_name}
+            disabled={is_edit}
           />
 
           <Dropdown
