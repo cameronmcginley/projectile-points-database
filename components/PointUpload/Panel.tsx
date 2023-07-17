@@ -118,6 +118,7 @@ const Panel = ({ is_edit, point_data }) => {
         description: point_description,
       })
     );
+    return point_name_id;
   };
 
   const handleUpdatePoint = async () => {
@@ -148,13 +149,14 @@ const Panel = ({ is_edit, point_data }) => {
         description: point_description,
       })
     );
+    return point_name_id;
   };
 
   const checkValidSubmission = () => {
     return point_name != "";
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Check valid
     if (!checkValidSubmission()) {
       console.log("Error Submitting");
@@ -166,9 +168,9 @@ const Panel = ({ is_edit, point_data }) => {
     let name_id;
 
     if (is_edit) {
-      name_id = handleUpdatePoint();
+      name_id = await handleUpdatePoint();
     } else {
-      name_id = uploadNewPoint();
+      name_id = await uploadNewPoint();
     }
 
     setTimeout(() => {
